@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://gumruk.gov.tr/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="YetkiService" targetNamespace="http://gumruk.gov.tr/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://gumruk.gov.tr/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/YetkiKontrol.WCF.DataType" />
+      <xs:element name="ProjeProfilListesi">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="projeId" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProjeProfilListesiResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ProjeProfilListesiResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="KullaniciYetkileriniGetir">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="tcno" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sifre" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="memurMu" type="xs:boolean" />
+            <xs:element minOccurs="0" name="projeId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ipAdresi" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="macAdresi" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="projeAdi" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="KullaniciYetkileriniGetirResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/YetkiKontrol.WCF.DataType" minOccurs="0" name="KullaniciYetkileriniGetirResult" nillable="true" type="q1:KullaniciYetkiBilgisi" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="KullaniciYetkileriDataSetXML">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="tcno" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="sifre" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="memurMu" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="KullaniciYetkileriDataSetXMLResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="KullaniciYetkileriDataSetXMLResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/YetkiKontrol.WCF.DataType" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/YetkiKontrol.WCF.DataType" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="KullaniciYetkiBilgisi">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdSoyad" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GumrukAdi" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GumrukId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GumrukKodu" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HataMesaji" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SicilNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TCKimlikNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VergiNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="YetkiListesi" nillable="true" type="tns:ArrayOfYetki" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KullaniciYetkiBilgisi" nillable="true" type="tns:KullaniciYetkiBilgisi" />
+      <xs:complexType name="ArrayOfYetki">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Yetki" nillable="true" type="tns:Yetki" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfYetki" nillable="true" type="tns:ArrayOfYetki" />
+      <xs:complexType name="Yetki">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirmaVergiNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="YetkiAdi" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="YetkiId" type="xs:int" />
+          <xs:element minOccurs="0" name="YetkiPrefix" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Yetki" nillable="true" type="tns:Yetki" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IYetkiService_ProjeProfilListesi_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProjeProfilListesi" />
+  </wsdl:message>
+  <wsdl:message name="IYetkiService_ProjeProfilListesi_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProjeProfilListesiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYetkiService_KullaniciYetkileriniGetir_InputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciYetkileriniGetir" />
+  </wsdl:message>
+  <wsdl:message name="IYetkiService_KullaniciYetkileriniGetir_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciYetkileriniGetirResponse" />
+  </wsdl:message>
+  <wsdl:message name="IYetkiService_KullaniciYetkileriDataSetXML_InputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciYetkileriDataSetXML" />
+  </wsdl:message>
+  <wsdl:message name="IYetkiService_KullaniciYetkileriDataSetXML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:KullaniciYetkileriDataSetXMLResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IYetkiService">
+    <wsdl:operation name="ProjeProfilListesi">
+      <wsdl:input wsaw:Action="http://gumruk.gov.tr/IYetkiService/ProjeProfilListesi" message="tns:IYetkiService_ProjeProfilListesi_InputMessage" />
+      <wsdl:output wsaw:Action="http://gumruk.gov.tr/IYetkiService/ProjeProfilListesiResponse" message="tns:IYetkiService_ProjeProfilListesi_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciYetkileriniGetir">
+      <wsdl:input wsaw:Action="http://gumruk.gov.tr/IYetkiService/KullaniciYetkileriniGetir" message="tns:IYetkiService_KullaniciYetkileriniGetir_InputMessage" />
+      <wsdl:output wsaw:Action="http://gumruk.gov.tr/IYetkiService/KullaniciYetkileriniGetirResponse" message="tns:IYetkiService_KullaniciYetkileriniGetir_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciYetkileriDataSetXML">
+      <wsdl:input wsaw:Action="http://gumruk.gov.tr/IYetkiService/KullaniciYetkileriDataSetXML" message="tns:IYetkiService_KullaniciYetkileriDataSetXML_InputMessage" />
+      <wsdl:output wsaw:Action="http://gumruk.gov.tr/IYetkiService/KullaniciYetkileriDataSetXMLResponse" message="tns:IYetkiService_KullaniciYetkileriDataSetXML_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IYetkiService" type="tns:IYetkiService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ProjeProfilListesi">
+      <soap:operation soapAction="http://gumruk.gov.tr/IYetkiService/ProjeProfilListesi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciYetkileriniGetir">
+      <soap:operation soapAction="http://gumruk.gov.tr/IYetkiService/KullaniciYetkileriniGetir" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KullaniciYetkileriDataSetXML">
+      <soap:operation soapAction="http://gumruk.gov.tr/IYetkiService/KullaniciYetkileriDataSetXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="YetkiService">
+    <wsdl:port name="BasicHttpBinding_IYetkiService" binding="tns:BasicHttpBinding_IYetkiService">
+      <soap:address location="http://wstest.gtb.gov.tr:8080/INT/Gumruk/Yetki/Provider/YetkiKontrol" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

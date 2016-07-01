@@ -1,0 +1,6 @@
+c:\users\ramazan\documents\visual studio 2015\Projects\testProject\testProject\bin\testProject.dll.config
+c:\users\ramazan\documents\visual studio 2015\Projects\testProject\testProject\bin\testProject.dll
+c:\users\ramazan\documents\visual studio 2015\Projects\testProject\testProject\bin\testProject.pdb
+c:\users\ramazan\documents\visual studio 2015\Projects\testProject\testProject\obj\Debug\testProject.csprojResolveAssemblyReference.cache
+c:\users\ramazan\documents\visual studio 2015\Projects\testProject\testProject\obj\Debug\testProject.dll
+c:\users\ramazan\documents\visual studio 2015\Projects\testProject\testProject\obj\Debug\testProject.pdb
