@@ -1,0 +1,1441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sql8126141Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="address" Type="varchar" MaxLength="4000" />
+          <Property Name="regionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="45" />
+          <Property Name="note" Type="varchar" MaxLength="4000" />
+          <Property Name="contactID" Type="int" Nullable="false" />
+          <Property Name="addressID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="contactType" Type="int" />
+          <Property Name="value" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="45" />
+          <Property Name="username" Type="varchar" MaxLength="45" />
+          <Property Name="password" Type="varchar" MaxLength="8000" />
+          <Property Name="firmID" Type="int" Nullable="false" />
+          <Property Name="roleID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="firm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="firmType" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="logo" Type="varchar" MaxLength="8000" />
+          <Property Name="contactID" Type="int" Nullable="false" />
+          <Property Name="addressID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="tableName" Type="varchar" MaxLength="45" />
+          <Property Name="columnName" Type="varchar" MaxLength="45" />
+          <Property Name="oldValue" Type="varchar" MaxLength="4000" />
+          <Property Name="newValue" Type="varchar" MaxLength="4000" />
+          <Property Name="employeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="deliveryStatus" Type="int" />
+          <Property Name="deliveryDate" Type="datetime" Precision="0" />
+          <Property Name="firmID" Type="int" Nullable="false" />
+          <Property Name="clientID" Type="int" Nullable="false" />
+          <Property Name="paymentID" Type="int" Nullable="false" />
+          <Property Name="employeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="unitType" Type="int" />
+          <Property Name="unitSize" Type="int" />
+          <Property Name="isApproved" Type="int" />
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="priceID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="price" Type="float" />
+          <Property Name="paymentDate" Type="datetime" Precision="0" />
+          <Property Name="paymentType" Type="int" />
+        </EntityType>
+        <EntityType Name="paymentdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="oldPrice" Type="float" />
+          <Property Name="newPrice" Type="float" />
+          <Property Name="paidAmount" Type="float" />
+          <Property Name="paymentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="price">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="price" Type="float" />
+          <Property Name="productID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="productlist">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="firmID" Type="int" Nullable="false" />
+          <Property Name="productID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="location" Type="varchar" MaxLength="8000" />
+          <Property Name="firmID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stockdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creationDate" Type="datetime" Precision="0" />
+          <Property Name="updateDate" Type="datetime" Precision="0" />
+          <Property Name="isActive" Type="int" />
+          <Property Name="amount" Type="int" />
+          <Property Name="unitType" Type="int" />
+          <Property Name="unitSize" Type="int" />
+          <Property Name="priceID" Type="int" Nullable="false" />
+          <Property Name="stockID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fkAddressRegionID">
+          <End Role="region" Type="Self.region" Multiplicity="1" />
+          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="regionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientAddressID">
+          <End Role="address" Type="Self.address" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="addressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientContactID">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkEmployeeFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkEmployeeRoleID">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="roleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFirmAddressID">
+          <End Role="address" Type="Self.address" Multiplicity="1" />
+          <End Role="firm" Type="Self.firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="firm">
+              <PropertyRef Name="addressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFirmContactID">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="firm" Type="Self.firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="firm">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkLogEmployeeID">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="log" Type="Self.log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="log">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderClientID">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderEmployeeID">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderListOrderID">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderListPriceID">
+          <End Role="price" Type="Self.price" Multiplicity="1" />
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="price">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="priceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderPaymentID">
+          <End Role="payment" Type="Self.payment" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpaymentDetailPaymentID">
+          <End Role="payment" Type="Self.payment" Multiplicity="1" />
+          <End Role="paymentdetail" Type="Self.paymentdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paymentdetail">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPriceProductID">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="price" Type="Self.price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkProductListFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="productlist" Type="Self.productlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productlist">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkProductListProductID">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="productlist" Type="Self.productlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productlist">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStockFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStockListPriceID">
+          <End Role="price" Type="Self.price" Multiplicity="1" />
+          <End Role="stockdetail" Type="Self.stockdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="price">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stockdetail">
+              <PropertyRef Name="priceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStockListStockID">
+          <End Role="stock" Type="Self.stock" Multiplicity="1" />
+          <End Role="stockdetail" Type="Self.stockdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stock">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stockdetail">
+              <PropertyRef Name="stockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sql8126141ModelStoreContainer">
+          <EntitySet Name="address" EntityType="Self.address" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="contact" EntityType="Self.contact" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="firm" EntityType="Self.firm" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="log" EntityType="Self.log" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="orderdetail" EntityType="Self.orderdetail" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="payment" EntityType="Self.payment" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="paymentdetail" EntityType="Self.paymentdetail" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="price" EntityType="Self.price" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="productlist" EntityType="Self.productlist" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="region" EntityType="Self.region" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="stock" EntityType="Self.stock" Schema="sql8126141" store:Type="Tables" />
+          <EntitySet Name="stockdetail" EntityType="Self.stockdetail" Schema="sql8126141" store:Type="Tables" />
+          <AssociationSet Name="fkAddressRegionID" Association="Self.fkAddressRegionID">
+            <End Role="region" EntitySet="region" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientAddressID" Association="Self.fkClientAddressID">
+            <End Role="address" EntitySet="address" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientContactID" Association="Self.fkClientContactID">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="fkEmployeeFirmID" Association="Self.fkEmployeeFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="fkEmployeeRoleID" Association="Self.fkEmployeeRoleID">
+            <End Role="role" EntitySet="role" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="fkFirmAddressID" Association="Self.fkFirmAddressID">
+            <End Role="address" EntitySet="address" />
+            <End Role="firm" EntitySet="firm" />
+          </AssociationSet>
+          <AssociationSet Name="fkFirmContactID" Association="Self.fkFirmContactID">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="firm" EntitySet="firm" />
+          </AssociationSet>
+          <AssociationSet Name="fkLogEmployeeID" Association="Self.fkLogEmployeeID">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="log" EntitySet="log" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderClientID" Association="Self.fkOrderClientID">
+            <End Role="client" EntitySet="client" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderEmployeeID" Association="Self.fkOrderEmployeeID">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderFirmID" Association="Self.fkOrderFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderListOrderID" Association="Self.fkOrderListOrderID">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderListPriceID" Association="Self.fkOrderListPriceID">
+            <End Role="price" EntitySet="price" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderPaymentID" Association="Self.fkOrderPaymentID">
+            <End Role="payment" EntitySet="payment" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkpaymentDetailPaymentID" Association="Self.fkpaymentDetailPaymentID">
+            <End Role="payment" EntitySet="payment" />
+            <End Role="paymentdetail" EntitySet="paymentdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkPriceProductID" Association="Self.fkPriceProductID">
+            <End Role="product" EntitySet="product" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+          <AssociationSet Name="fkProductListFirmID" Association="Self.fkProductListFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="productlist" EntitySet="productlist" />
+          </AssociationSet>
+          <AssociationSet Name="fkProductListProductID" Association="Self.fkProductListProductID">
+            <End Role="product" EntitySet="product" />
+            <End Role="productlist" EntitySet="productlist" />
+          </AssociationSet>
+          <AssociationSet Name="fkStockFirmID" Association="Self.fkStockFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="stock" EntitySet="stock" />
+          </AssociationSet>
+          <AssociationSet Name="fkStockListPriceID" Association="Self.fkStockListPriceID">
+            <End Role="price" EntitySet="price" />
+            <End Role="stockdetail" EntitySet="stockdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkStockListStockID" Association="Self.fkStockListStockID">
+            <End Role="stock" EntitySet="stock" />
+            <End Role="stockdetail" EntitySet="stockdetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sql8126141Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="address1" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="regionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="region" Relationship="Self.fkAddressRegionID" FromRole="address" ToRole="region" />
+          <NavigationProperty Name="client" Relationship="Self.fkClientAddressID" FromRole="address" ToRole="client" />
+          <NavigationProperty Name="firm" Relationship="Self.fkFirmAddressID" FromRole="address" ToRole="firm" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="contactID" Type="Int32" Nullable="false" />
+          <Property Name="addressID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Self.fkClientAddressID" FromRole="client" ToRole="address" />
+          <NavigationProperty Name="contact" Relationship="Self.fkClientContactID" FromRole="client" ToRole="contact" />
+          <NavigationProperty Name="order" Relationship="Self.fkOrderClientID" FromRole="client" ToRole="order" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="contactType" Type="Int32" />
+          <Property Name="value" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="client" Relationship="Self.fkClientContactID" FromRole="contact" ToRole="client" />
+          <NavigationProperty Name="firm" Relationship="Self.fkFirmContactID" FromRole="contact" ToRole="firm" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="firmID" Type="Int32" Nullable="false" />
+          <Property Name="roleID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="firm" Relationship="Self.fkEmployeeFirmID" FromRole="employee" ToRole="firm" />
+          <NavigationProperty Name="role" Relationship="Self.fkEmployeeRoleID" FromRole="employee" ToRole="role" />
+          <NavigationProperty Name="log" Relationship="Self.fkLogEmployeeID" FromRole="employee" ToRole="log" />
+          <NavigationProperty Name="order" Relationship="Self.fkOrderEmployeeID" FromRole="employee" ToRole="order" />
+        </EntityType>
+        <EntityType Name="firm">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="firmType" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="contactID" Type="Int32" Nullable="false" />
+          <Property Name="addressID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Self.fkFirmAddressID" FromRole="firm" ToRole="address" />
+          <NavigationProperty Name="contact" Relationship="Self.fkFirmContactID" FromRole="firm" ToRole="contact" />
+          <NavigationProperty Name="employee" Relationship="Self.fkEmployeeFirmID" FromRole="firm" ToRole="employee" />
+          <NavigationProperty Name="order" Relationship="Self.fkOrderFirmID" FromRole="firm" ToRole="order" />
+          <NavigationProperty Name="productlist" Relationship="Self.fkProductListFirmID" FromRole="firm" ToRole="productlist" />
+          <NavigationProperty Name="stock" Relationship="Self.fkStockFirmID" FromRole="firm" ToRole="stock" />
+        </EntityType>
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="tableName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="columnName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="oldValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="newValue" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="employeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Self.fkLogEmployeeID" FromRole="log" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="deliveryStatus" Type="Int32" />
+          <Property Name="deliveryDate" Type="DateTime" />
+          <Property Name="firmID" Type="Int32" Nullable="false" />
+          <Property Name="clientID" Type="Int32" Nullable="false" />
+          <Property Name="paymentID" Type="Int32" Nullable="false" />
+          <Property Name="employeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client" Relationship="Self.fkOrderClientID" FromRole="order" ToRole="client" />
+          <NavigationProperty Name="employee" Relationship="Self.fkOrderEmployeeID" FromRole="order" ToRole="employee" />
+          <NavigationProperty Name="firm" Relationship="Self.fkOrderFirmID" FromRole="order" ToRole="firm" />
+          <NavigationProperty Name="orderdetail" Relationship="Self.fkOrderListOrderID" FromRole="order" ToRole="orderdetail" />
+          <NavigationProperty Name="payment" Relationship="Self.fkOrderPaymentID" FromRole="order" ToRole="payment" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="unitType" Type="Int32" />
+          <Property Name="unitSize" Type="Int32" />
+          <Property Name="isApproved" Type="Int32" />
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="priceID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="Self.fkOrderListOrderID" FromRole="orderdetail" ToRole="order" />
+          <NavigationProperty Name="price" Relationship="Self.fkOrderListPriceID" FromRole="orderdetail" ToRole="price" />
+        </EntityType>
+        <EntityType Name="payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="price" Type="Single" />
+          <Property Name="paymentDate" Type="DateTime" />
+          <Property Name="paymentType" Type="Int32" />
+          <NavigationProperty Name="order" Relationship="Self.fkOrderPaymentID" FromRole="payment" ToRole="order" />
+          <NavigationProperty Name="paymentdetail" Relationship="Self.fkpaymentDetailPaymentID" FromRole="payment" ToRole="paymentdetail" />
+        </EntityType>
+        <EntityType Name="paymentdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="oldPrice" Type="Single" />
+          <Property Name="newPrice" Type="Single" />
+          <Property Name="paidAmount" Type="Single" />
+          <Property Name="paymentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="payment" Relationship="Self.fkpaymentDetailPaymentID" FromRole="paymentdetail" ToRole="payment" />
+        </EntityType>
+        <EntityType Name="price">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="price1" Type="Single" />
+          <Property Name="productID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="orderdetail" Relationship="Self.fkOrderListPriceID" FromRole="price" ToRole="orderdetail" />
+          <NavigationProperty Name="product" Relationship="Self.fkPriceProductID" FromRole="price" ToRole="product" />
+          <NavigationProperty Name="stockdetail" Relationship="Self.fkStockListPriceID" FromRole="price" ToRole="stockdetail" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="price" Relationship="Self.fkPriceProductID" FromRole="product" ToRole="price" />
+          <NavigationProperty Name="productlist" Relationship="Self.fkProductListProductID" FromRole="product" ToRole="productlist" />
+        </EntityType>
+        <EntityType Name="productlist">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="firmID" Type="Int32" Nullable="false" />
+          <Property Name="productID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="firm" Relationship="Self.fkProductListFirmID" FromRole="productlist" ToRole="firm" />
+          <NavigationProperty Name="product" Relationship="Self.fkProductListProductID" FromRole="productlist" ToRole="product" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="address" Relationship="Self.fkAddressRegionID" FromRole="region" ToRole="address" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employee" Relationship="Self.fkEmployeeRoleID" FromRole="role" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="stock">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="firmID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="firm" Relationship="Self.fkStockFirmID" FromRole="stock" ToRole="firm" />
+          <NavigationProperty Name="stockdetail" Relationship="Self.fkStockListStockID" FromRole="stock" ToRole="stockdetail" />
+        </EntityType>
+        <EntityType Name="stockdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="unitType" Type="Int32" />
+          <Property Name="unitSize" Type="Int32" />
+          <Property Name="priceID" Type="Int32" Nullable="false" />
+          <Property Name="stockID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="price" Relationship="Self.fkStockListPriceID" FromRole="stockdetail" ToRole="price" />
+          <NavigationProperty Name="stock" Relationship="Self.fkStockListStockID" FromRole="stockdetail" ToRole="stock" />
+        </EntityType>
+        <Association Name="fkAddressRegionID">
+          <End Role="region" Type="Self.region" Multiplicity="1" />
+          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="regionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientAddressID">
+          <End Role="address" Type="Self.address" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="addressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFirmAddressID">
+          <End Role="address" Type="Self.address" Multiplicity="1" />
+          <End Role="firm" Type="Self.firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="firm">
+              <PropertyRef Name="addressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkClientContactID">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="client" Type="Self.client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="client">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderClientID">
+          <End Role="client" Type="Self.client" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkFirmContactID">
+          <End Role="contact" Type="Self.contact" Multiplicity="1" />
+          <End Role="firm" Type="Self.firm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contact">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="firm">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkEmployeeFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkEmployeeRoleID">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="roleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkLogEmployeeID">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="log" Type="Self.log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="log">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderEmployeeID">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkProductListFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="productlist" Type="Self.productlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productlist">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStockFirmID">
+          <End Role="firm" Type="Self.firm" Multiplicity="1" />
+          <End Role="stock" Type="Self.stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="firm">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stock">
+              <PropertyRef Name="firmID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderListOrderID">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderPaymentID">
+          <End Role="payment" Type="Self.payment" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderListPriceID">
+          <End Role="price" Type="Self.price" Multiplicity="1" />
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="price">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="priceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpaymentDetailPaymentID">
+          <End Role="payment" Type="Self.payment" Multiplicity="1" />
+          <End Role="paymentdetail" Type="Self.paymentdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="paymentdetail">
+              <PropertyRef Name="paymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkPriceProductID">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="price" Type="Self.price" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="price">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStockListPriceID">
+          <End Role="price" Type="Self.price" Multiplicity="1" />
+          <End Role="stockdetail" Type="Self.stockdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="price">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stockdetail">
+              <PropertyRef Name="priceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkProductListProductID">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="productlist" Type="Self.productlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="productlist">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkStockListStockID">
+          <End Role="stock" Type="Self.stock" Multiplicity="1" />
+          <End Role="stockdetail" Type="Self.stockdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stock">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="stockdetail">
+              <PropertyRef Name="stockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sql8126141Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="address" EntityType="Self.address" />
+          <EntitySet Name="client" EntityType="Self.client" />
+          <EntitySet Name="contact" EntityType="Self.contact" />
+          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="firm" EntityType="Self.firm" />
+          <EntitySet Name="log" EntityType="Self.log" />
+          <EntitySet Name="order" EntityType="Self.order" />
+          <EntitySet Name="orderdetail" EntityType="Self.orderdetail" />
+          <EntitySet Name="payment" EntityType="Self.payment" />
+          <EntitySet Name="paymentdetail" EntityType="Self.paymentdetail" />
+          <EntitySet Name="price" EntityType="Self.price" />
+          <EntitySet Name="product" EntityType="Self.product" />
+          <EntitySet Name="productlist" EntityType="Self.productlist" />
+          <EntitySet Name="region" EntityType="Self.region" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="stock" EntityType="Self.stock" />
+          <EntitySet Name="stockdetail" EntityType="Self.stockdetail" />
+          <AssociationSet Name="fkAddressRegionID" Association="Self.fkAddressRegionID">
+            <End Role="region" EntitySet="region" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientAddressID" Association="Self.fkClientAddressID">
+            <End Role="address" EntitySet="address" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="fkFirmAddressID" Association="Self.fkFirmAddressID">
+            <End Role="address" EntitySet="address" />
+            <End Role="firm" EntitySet="firm" />
+          </AssociationSet>
+          <AssociationSet Name="fkClientContactID" Association="Self.fkClientContactID">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="client" EntitySet="client" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderClientID" Association="Self.fkOrderClientID">
+            <End Role="client" EntitySet="client" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkFirmContactID" Association="Self.fkFirmContactID">
+            <End Role="contact" EntitySet="contact" />
+            <End Role="firm" EntitySet="firm" />
+          </AssociationSet>
+          <AssociationSet Name="fkEmployeeFirmID" Association="Self.fkEmployeeFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="fkEmployeeRoleID" Association="Self.fkEmployeeRoleID">
+            <End Role="role" EntitySet="role" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="fkLogEmployeeID" Association="Self.fkLogEmployeeID">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="log" EntitySet="log" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderEmployeeID" Association="Self.fkOrderEmployeeID">
+            <End Role="employee" EntitySet="employee" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderFirmID" Association="Self.fkOrderFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkProductListFirmID" Association="Self.fkProductListFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="productlist" EntitySet="productlist" />
+          </AssociationSet>
+          <AssociationSet Name="fkStockFirmID" Association="Self.fkStockFirmID">
+            <End Role="firm" EntitySet="firm" />
+            <End Role="stock" EntitySet="stock" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderListOrderID" Association="Self.fkOrderListOrderID">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderPaymentID" Association="Self.fkOrderPaymentID">
+            <End Role="payment" EntitySet="payment" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderListPriceID" Association="Self.fkOrderListPriceID">
+            <End Role="price" EntitySet="price" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkpaymentDetailPaymentID" Association="Self.fkpaymentDetailPaymentID">
+            <End Role="payment" EntitySet="payment" />
+            <End Role="paymentdetail" EntitySet="paymentdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkPriceProductID" Association="Self.fkPriceProductID">
+            <End Role="product" EntitySet="product" />
+            <End Role="price" EntitySet="price" />
+          </AssociationSet>
+          <AssociationSet Name="fkStockListPriceID" Association="Self.fkStockListPriceID">
+            <End Role="price" EntitySet="price" />
+            <End Role="stockdetail" EntitySet="stockdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkProductListProductID" Association="Self.fkProductListProductID">
+            <End Role="product" EntitySet="product" />
+            <End Role="productlist" EntitySet="productlist" />
+          </AssociationSet>
+          <AssociationSet Name="fkStockListStockID" Association="Self.fkStockListStockID">
+            <End Role="stock" EntitySet="stock" />
+            <End Role="stockdetail" EntitySet="stockdetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sql8126141ModelStoreContainer" CdmEntityContainer="sql8126141Entities">
+          <EntitySetMapping Name="address">
+            <EntityTypeMapping TypeName="sql8126141Model.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="address1" ColumnName="address" />
+                <ScalarProperty Name="regionID" ColumnName="regionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client">
+            <EntityTypeMapping TypeName="sql8126141Model.client">
+              <MappingFragment StoreEntitySet="client">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="contactID" ColumnName="contactID" />
+                <ScalarProperty Name="addressID" ColumnName="addressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact">
+            <EntityTypeMapping TypeName="sql8126141Model.contact">
+              <MappingFragment StoreEntitySet="contact">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="contactType" ColumnName="contactType" />
+                <ScalarProperty Name="value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="sql8126141Model.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="firmID" ColumnName="firmID" />
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="firm">
+            <EntityTypeMapping TypeName="sql8126141Model.firm">
+              <MappingFragment StoreEntitySet="firm">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="firmType" ColumnName="firmType" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="contactID" ColumnName="contactID" />
+                <ScalarProperty Name="addressID" ColumnName="addressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log">
+            <EntityTypeMapping TypeName="sql8126141Model.log">
+              <MappingFragment StoreEntitySet="log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="columnName" ColumnName="columnName" />
+                <ScalarProperty Name="oldValue" ColumnName="oldValue" />
+                <ScalarProperty Name="newValue" ColumnName="newValue" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="order">
+            <EntityTypeMapping TypeName="sql8126141Model.order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="deliveryStatus" ColumnName="deliveryStatus" />
+                <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
+                <ScalarProperty Name="firmID" ColumnName="firmID" />
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderdetail">
+            <EntityTypeMapping TypeName="sql8126141Model.orderdetail">
+              <MappingFragment StoreEntitySet="orderdetail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="unitType" ColumnName="unitType" />
+                <ScalarProperty Name="unitSize" ColumnName="unitSize" />
+                <ScalarProperty Name="isApproved" ColumnName="isApproved" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="priceID" ColumnName="priceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment">
+            <EntityTypeMapping TypeName="sql8126141Model.payment">
+              <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="paymentDate" ColumnName="paymentDate" />
+                <ScalarProperty Name="paymentType" ColumnName="paymentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paymentdetail">
+            <EntityTypeMapping TypeName="sql8126141Model.paymentdetail">
+              <MappingFragment StoreEntitySet="paymentdetail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="oldPrice" ColumnName="oldPrice" />
+                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+                <ScalarProperty Name="paidAmount" ColumnName="paidAmount" />
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="price">
+            <EntityTypeMapping TypeName="sql8126141Model.price">
+              <MappingFragment StoreEntitySet="price">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="price1" ColumnName="price" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product">
+            <EntityTypeMapping TypeName="sql8126141Model.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productlist">
+            <EntityTypeMapping TypeName="sql8126141Model.productlist">
+              <MappingFragment StoreEntitySet="productlist">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="firmID" ColumnName="firmID" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="region">
+            <EntityTypeMapping TypeName="sql8126141Model.region">
+              <MappingFragment StoreEntitySet="region">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="sql8126141Model.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stock">
+            <EntityTypeMapping TypeName="sql8126141Model.stock">
+              <MappingFragment StoreEntitySet="stock">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="firmID" ColumnName="firmID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stockdetail">
+            <EntityTypeMapping TypeName="sql8126141Model.stockdetail">
+              <MappingFragment StoreEntitySet="stockdetail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="unitType" ColumnName="unitType" />
+                <ScalarProperty Name="unitSize" ColumnName="unitSize" />
+                <ScalarProperty Name="priceID" ColumnName="priceID" />
+                <ScalarProperty Name="stockID" ColumnName="stockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
