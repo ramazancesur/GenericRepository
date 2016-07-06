@@ -1,9 +1,10 @@
 ﻿using test2.EntityDao.GenericDao;
-using test2.Model;
+using Ws.Model;
+
 
 namespace test2.EntityDao.Log
 {
-    public class LogDao: GenericRepository<TestProjectEntities, log>
+    public class LogDao: GenericRepository<sql8126141Entities, log>
     {
     }
 }

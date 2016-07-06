@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using test2.EntityDao.GenericDao;
+using Ws.Model;
+
 
 namespace test2.EntityDao.StockDetails
 {
-    public class StockDetailsDao
+    public class StockDetailsDao : GenericRepository<sql8126141Entities, stockdetail>
     {
     }
 }

@@ -79,6 +79,32 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityDao\Address\AdressDao.cs" />
+    <Compile Include="EntityDao\Address\IAdressRepo.cs" />
+    <Compile Include="EntityDao\Client\ClientDao.cs" />
+    <Compile Include="EntityDao\Client\IClientRepo.cs" />
+    <Compile Include="EntityDao\Contact\ContactDao.cs" />
+    <Compile Include="EntityDao\Employee\EmployeeDao.cs" />
+    <Compile Include="EntityDao\Firm\FirmDao.cs" />
+    <Compile Include="EntityDao\GenericDao\GenericRepository.cs" />
+    <Compile Include="EntityDao\GenericDao\IGenericRepository.cs" />
+    <Compile Include="EntityDao\Log\LogDao.cs" />
+    <Compile Include="EntityDao\OrderDetails\OrderDetailsDao.cs" />
+    <Compile Include="EntityDao\Order\OrderDao.cs" />
+    <Compile Include="EntityDao\PaymentDetails\PaymentDetailsDao.cs" />
+    <Compile Include="EntityDao\Payment\PaymentDao.cs" />
+    <Compile Include="EntityDao\Price\PriceDao.cs" />
+    <Compile Include="EntityDao\ProductList\ProductListDao.cs" />
+    <Compile Include="EntityDao\Product\ProductDao.cs" />
+    <Compile Include="EntityDao\Regain\RegionDao.cs" />
+    <Compile Include="EntityDao\Role\RoleDao.cs" />
+    <Compile Include="EntityDao\StockDetails\StockDetailsDao.cs" />
+    <Compile Include="EntityDao\Stock\StockDao.cs" />
+    <Compile Include="EntityResources\Calisan\CalisanResources.cs" />
+    <Compile Include="EntityResources\Firma\FirmResources.cs" />
+    <Compile Include="EntityResources\Harcama\HarcamaResources.cs" />
+    <Compile Include="EntityResources\Urun\UrunResources.cs" />
+    <Compile Include="Helper\CreateLog.cs" />
     <Compile Include="Model\address.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -147,6 +173,17 @@
     <Compile Include="Model\stockdetail.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="RestWs\Dto\BaseDTO.cs" />
+    <Compile Include="RestWs\Dto\CalisanDTO.cs" />
+    <Compile Include="RestWs\Dto\FirmDTO.cs" />
+    <Compile Include="RestWs\Dto\HarcamaDTO.cs" />
+    <Compile Include="RestWs\Dto\LisanceDTO.cs" />
+    <Compile Include="RestWs\Dto\LogDTO.cs" />
+    <Compile Include="RestWs\Dto\MusteriDTO.cs" />
+    <Compile Include="RestWs\Dto\SaticiDTO.cs" />
+    <Compile Include="RestWs\Dto\SatisRaporlariDTO.cs" />
+    <Compile Include="RestWs\Dto\SiparisListesi.cs" />
+    <Compile Include="RestWs\Dto\UrunDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -166,6 +203,13 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EntityResources\Lisans\" />
+    <Folder Include="EntityResources\Musteri\" />
+    <Folder Include="EntityResources\Satici\" />
+    <Folder Include="EntityResources\SatisRaporlama\" />
+    <Folder Include="EntityResources\Siparis\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

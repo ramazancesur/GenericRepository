@@ -1,6 +1,5 @@
 ﻿using test2.EntityDao.GenericDao;
-using test2.Model;
-
+using Ws.Model;
 namespace test2.EntityDao.Address
 {
     interface IAdressRepo:IGenericRepository<address>

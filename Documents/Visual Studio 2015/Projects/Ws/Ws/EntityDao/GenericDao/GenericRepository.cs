@@ -43,7 +43,7 @@ namespace test2.EntityDao.GenericDao
 
         public virtual void Edit(T entity)
         {
-            _entities.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+            _entities.Entry(entity).State = System.Data.EntityState.Modified;
         }
 
         public virtual void Save()

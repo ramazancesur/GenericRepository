@@ -1,9 +1,10 @@
 ﻿using test2.EntityDao.GenericDao;
-using test2.Model;
+using Ws.Model;
+
 
 namespace test2.EntityDao.Firm
 {
-    public class FirmDao: GenericRepository<TestProjectEntities,firm>
+    public class FirmDao: GenericRepository<sql8126141Entities,firm>
     {
     }
 }

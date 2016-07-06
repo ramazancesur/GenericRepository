@@ -1,19 +1,11 @@
-﻿using System.Collections.Generic;
-using test2.EntityDao.GenericDao;
-using test2.Model;
+﻿using test2.EntityDao.GenericDao;
+using Ws.Model;
+
 
 namespace test2.EntityDao.Stock
 {
-    public class StockDao: GenericRepository<TestProjectEntities, stock>
+    public class StockDao: GenericRepository<sql8126141Entities, stock>
     {
-        TestProjectEntities test = new TestProjectEntities();
-        public address findById(int ID)
-        {
-            address Address = Context.address.Find(ID);
-            
-            return Address;
-
-
-        }
+      
     }
 }

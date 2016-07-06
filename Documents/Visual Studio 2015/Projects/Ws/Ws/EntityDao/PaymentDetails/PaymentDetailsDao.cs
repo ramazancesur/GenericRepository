@@ -1,9 +1,10 @@
 ﻿using test2.EntityDao.GenericDao;
-using test2.Model;
+using Ws.Model;
+
 
 namespace test2.EntityDao.PaymentDetails
 {
-    public class PaymentDetailsDao: GenericRepository<TestProjectEntities,payment>
+    public class PaymentDetailsDao: GenericRepository<sql8126141Entities,payment>
     {
     }
 }
