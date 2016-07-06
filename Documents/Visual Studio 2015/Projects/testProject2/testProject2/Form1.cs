@@ -19,6 +19,13 @@ namespace testProject2
         {
             Type type = table.GetType();
             Console.WriteLine(type.FullName);
+            Console.WriteLine(type.Name);
+            foreach (var item in type.GetFields())
+            {
+                Console.WriteLine(item.Name);
+            }
+            Console.WriteLine(type.GetFields());
+
         }
         test test;
         private void button1_Click(object sender, EventArgs e)
