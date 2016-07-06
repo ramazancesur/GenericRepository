@@ -24,14 +24,17 @@ namespace testProject2
             {
                 Console.WriteLine(item.Name);
             }
-            Console.WriteLine(type.GetFields());
+            Console.WriteLine(type.GetField("id"));
 
         }
         test test;
+        test2 test2;
         private void button1_Click(object sender, EventArgs e)
         {
             test = new test();
+            test2 = new test2();
             mytest(test);
+            mytest(test2);
         }
     }
 }
