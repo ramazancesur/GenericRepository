@@ -135,11 +135,13 @@ namespace Ws.EntityResources.Urun
             // **************** Firm Listeleme End ****************** //
             return firmDTO;
         }
-        public UrunDTO deleteUrunDTO(UrunDTO urunDTO, CalisanDTO createdCalisanDTO)
+        public UrunDTO deleteUrunDTO(UrunDTO urunDTO, CalisanDTO createdCalisanDTO,int firmID)
         {
             product product = productDao.FindBy(x => x.id == urunDTO.ID).FirstOrDefault();
             List<productlist> lstProductList = productListDao.FindBy(x => x.productID == product.id && x.isActive == 1).ToList();
             List<price> lstPrice = priceDao.FindBy(x => x.productID == product.id && x.isActive == 1).ToList();
+            stock stock = stockDao.FindBy(x => x.firmID == firmID && x.name == product.name && x.isActive == 1).FirstOrDefault();
+
             product.isActive = 0;
             productDao.Edit(product);
             createLog.SaveLog<product>(createdCalisanDTO, product, 0);
@@ -155,6 +157,8 @@ namespace Ws.EntityResources.Urun
                 priceDao.Edit(price);
                 createLog.SaveLog(createdCalisanDTO, price, 0);
             }
+            stockDao.Edit(stock);
+
             return urunDTO;
         }
         #region updateUrunDTO
@@ -199,10 +203,14 @@ namespace Ws.EntityResources.Urun
             product product = new product();
             productlist productList = new productlist();
             price price = new price();
+            stock stock = new stock();
+            stockdetail stockDetail = new stockdetail();
 
             product.isActive = 1;
             productList.isActive = 1;
             price.isActive = 1;
+            stock.isActive = 1;
+            stockDetail.isActive = 1;
 
             // ************** Product Kayıt Işlemi **************** //
             product.name = urunDTO.productName;
@@ -227,6 +235,26 @@ namespace Ws.EntityResources.Urun
             price.productID = product.id;
             priceDao.Add(price);
             createLog.SaveLog<price>(createdCalisanDTO, price, 1);
+
+            // ************** Stock tablosuna insert ************* //
+            stock.firmID = productList.firmID;
+            stock.location = urunDTO.firmDTO.address;
+            stock.name = product.name;
+            stock.creationDate = DateTime.Now;
+            stock.updateDate = DateTime.Now;
+            stockDao.Add(stock);
+            createLog.SaveLog(createdCalisanDTO, stock, 1);
+
+            // ********* StockDetail Tablosu insert *********** //
+
+            stockDetail.creationDate = DateTime.Now;
+            stockDetail.updateDate = DateTime.Now;
+            stockDetail.priceID = price.id;
+            stockDetail.stockID = stock.id;
+            stockDetail.unitSize = 1;
+            stockDetail.unitType = 1;
+            stockDetailDao.Add(stockDetail);
+            createLog.SaveLog(createdCalisanDTO, stockDetail, 1);
 
             return urunDTO;
         }
