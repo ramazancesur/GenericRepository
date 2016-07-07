@@ -103,6 +103,7 @@
     <Compile Include="EntityResources\Calisan\CalisanResources.cs" />
     <Compile Include="EntityResources\Firma\FirmResources.cs" />
     <Compile Include="EntityResources\Harcama\HarcamaResources.cs" />
+    <Compile Include="EntityResources\Satici\SaticiResources.cs" />
     <Compile Include="EntityResources\Urun\UrunResources.cs" />
     <Compile Include="Helper\CreateLog.cs" />
     <Compile Include="Model\address.cs">
@@ -207,7 +208,6 @@
   <ItemGroup>
     <Folder Include="EntityResources\Lisans\" />
     <Folder Include="EntityResources\Musteri\" />
-    <Folder Include="EntityResources\Satici\" />
     <Folder Include="EntityResources\SatisRaporlama\" />
     <Folder Include="EntityResources\Siparis\" />
   </ItemGroup>
