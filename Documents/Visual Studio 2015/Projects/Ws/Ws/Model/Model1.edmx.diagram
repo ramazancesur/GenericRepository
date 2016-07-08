@@ -4,45 +4,45 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="696c4a9f04e549d8af734d663b6f6614" Name="Diagram1">
-        <EntityTypeShape EntityType="sql8126141Model.address" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.client" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.contact" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.employee" Width="1.5" PointX="11.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.firm" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.log" Width="1.5" PointX="13.5" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.order" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.orderdetail" Width="1.5" PointX="13.5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.payment" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.paymentdetail" Width="1.5" PointX="8.25" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.price" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.product" Width="1.5" PointX="9" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.productlist" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.region" Width="1.5" PointX="1.5" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.role" Width="1.5" PointX="9" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.stock" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="sql8126141Model.stockdetail" Width="1.5" PointX="10.5" PointY="16.125" IsExpanded="true" />
-        <AssociationConnector Association="sql8126141Model.fkAddressRegionID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkClientAddressID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkFirmAddressID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkClientContactID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkOrderClientID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkFirmContactID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkEmployeeFirmID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkEmployeeRoleID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkLogEmployeeID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkOrderEmployeeID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkOrderFirmID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkProductListFirmID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkStockFirmID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkOrderListOrderID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkOrderPaymentID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkOrderListPriceID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkpaymentDetailPaymentID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkPriceProductID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkStockListPriceID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkProductListProductID" ManuallyRouted="false" />
-        <AssociationConnector Association="sql8126141Model.fkStockListStockID" ManuallyRouted="false" />
+      <Diagram DiagramId="11593be67ede4dd1b8ac9e13676a1215" Name="Diagram1">
+        <EntityTypeShape EntityType="mobileModel.address" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.client" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.contact" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.employee" Width="1.5" PointX="11.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.firm" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.log" Width="1.5" PointX="13.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.order" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.orderdetail" Width="1.5" PointX="13.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.payment" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.paymentdetail" Width="1.5" PointX="8.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.price" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.product" Width="1.5" PointX="9" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.productlist" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.region" Width="1.5" PointX="1.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.role" Width="1.5" PointX="9" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.stock" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mobileModel.stockdetail" Width="1.5" PointX="10.5" PointY="16.125" IsExpanded="true" />
+        <AssociationConnector Association="mobileModel.fkAddressRegionID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkClientAddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkFirmAddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkClientContactID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkOrderClientID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkFirmContactID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkEmployeeFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkEmployeeRoleID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkLogEmployeeID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkOrderEmployeeID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkOrderFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkProductListFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkStockFirmID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkOrderListOrderID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkOrderPaymentID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkOrderListPriceID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkpaymentDetailPaymentID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkPriceProductID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkStockListPriceID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkProductListProductID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkStockListStockID" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

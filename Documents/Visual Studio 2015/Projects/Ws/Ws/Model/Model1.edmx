@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sql8126141Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="mobileModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="address">
           <Key>
             <PropertyRef Name="id" />
@@ -26,6 +26,8 @@
           <Property Name="isActive" Type="int" />
           <Property Name="title" Type="varchar" MaxLength="45" />
           <Property Name="note" Type="varchar" MaxLength="4000" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
+          <Property Name="surname" Type="varchar" MaxLength="45" />
           <Property Name="contactID" Type="int" Nullable="false" />
           <Property Name="addressID" Type="int" Nullable="false" />
         </EntityType>
@@ -467,24 +469,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="sql8126141ModelStoreContainer">
-          <EntitySet Name="address" EntityType="Self.address" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="client" EntityType="Self.client" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="contact" EntityType="Self.contact" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="employee" EntityType="Self.employee" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="firm" EntityType="Self.firm" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="log" EntityType="Self.log" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="order" EntityType="Self.order" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="orderdetail" EntityType="Self.orderdetail" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="payment" EntityType="Self.payment" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="paymentdetail" EntityType="Self.paymentdetail" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="price" EntityType="Self.price" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="product" EntityType="Self.product" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="productlist" EntityType="Self.productlist" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="region" EntityType="Self.region" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="role" EntityType="Self.role" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="stock" EntityType="Self.stock" Schema="sql8126141" store:Type="Tables" />
-          <EntitySet Name="stockdetail" EntityType="Self.stockdetail" Schema="sql8126141" store:Type="Tables" />
+        <EntityContainer Name="mobileModelStoreContainer">
+          <EntitySet Name="address" EntityType="Self.address" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="client" EntityType="Self.client" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="contact" EntityType="Self.contact" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="firm" EntityType="Self.firm" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="log" EntityType="Self.log" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="orderdetail" EntityType="Self.orderdetail" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="payment" EntityType="Self.payment" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="paymentdetail" EntityType="Self.paymentdetail" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="price" EntityType="Self.price" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="productlist" EntityType="Self.productlist" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="region" EntityType="Self.region" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="stock" EntityType="Self.stock" Schema="mobile" store:Type="Tables" />
+          <EntitySet Name="stockdetail" EntityType="Self.stockdetail" Schema="mobile" store:Type="Tables" />
           <AssociationSet Name="fkAddressRegionID" Association="Self.fkAddressRegionID">
             <End Role="region" EntitySet="region" />
             <End Role="address" EntitySet="address" />
@@ -574,7 +576,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="sql8126141Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="mobileModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityType Name="address">
           <Key>
             <PropertyRef Name="id" />
@@ -599,6 +601,8 @@
           <Property Name="isActive" Type="Int32" />
           <Property Name="title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="note" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="contactID" Type="Int32" Nullable="false" />
           <Property Name="addressID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="address" Relationship="Self.fkClientAddressID" FromRole="client" ToRole="address" />
@@ -1187,9 +1191,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="sql8126141ModelStoreContainer" CdmEntityContainer="sql8126141Entities">
+        <EntityContainerMapping StorageEntityContainer="mobileModelStoreContainer" CdmEntityContainer="sql8126141Entities">
           <EntitySetMapping Name="address">
-            <EntityTypeMapping TypeName="sql8126141Model.address">
+            <EntityTypeMapping TypeName="mobileModel.address">
               <MappingFragment StoreEntitySet="address">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1201,7 +1205,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="client">
-            <EntityTypeMapping TypeName="sql8126141Model.client">
+            <EntityTypeMapping TypeName="mobileModel.client">
               <MappingFragment StoreEntitySet="client">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1209,13 +1213,15 @@
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
                 <ScalarProperty Name="contactID" ColumnName="contactID" />
                 <ScalarProperty Name="addressID" ColumnName="addressID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="contact">
-            <EntityTypeMapping TypeName="sql8126141Model.contact">
+            <EntityTypeMapping TypeName="mobileModel.contact">
               <MappingFragment StoreEntitySet="contact">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1227,7 +1233,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="employee">
-            <EntityTypeMapping TypeName="sql8126141Model.employee">
+            <EntityTypeMapping TypeName="mobileModel.employee">
               <MappingFragment StoreEntitySet="employee">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1242,7 +1248,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="firm">
-            <EntityTypeMapping TypeName="sql8126141Model.firm">
+            <EntityTypeMapping TypeName="mobileModel.firm">
               <MappingFragment StoreEntitySet="firm">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1257,7 +1263,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="log">
-            <EntityTypeMapping TypeName="sql8126141Model.log">
+            <EntityTypeMapping TypeName="mobileModel.log">
               <MappingFragment StoreEntitySet="log">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1272,7 +1278,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="order">
-            <EntityTypeMapping TypeName="sql8126141Model.order">
+            <EntityTypeMapping TypeName="mobileModel.order">
               <MappingFragment StoreEntitySet="order">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1288,7 +1294,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orderdetail">
-            <EntityTypeMapping TypeName="sql8126141Model.orderdetail">
+            <EntityTypeMapping TypeName="mobileModel.orderdetail">
               <MappingFragment StoreEntitySet="orderdetail">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1304,7 +1310,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="payment">
-            <EntityTypeMapping TypeName="sql8126141Model.payment">
+            <EntityTypeMapping TypeName="mobileModel.payment">
               <MappingFragment StoreEntitySet="payment">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1317,7 +1323,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="paymentdetail">
-            <EntityTypeMapping TypeName="sql8126141Model.paymentdetail">
+            <EntityTypeMapping TypeName="mobileModel.paymentdetail">
               <MappingFragment StoreEntitySet="paymentdetail">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1331,7 +1337,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="price">
-            <EntityTypeMapping TypeName="sql8126141Model.price">
+            <EntityTypeMapping TypeName="mobileModel.price">
               <MappingFragment StoreEntitySet="price">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1343,7 +1349,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="product">
-            <EntityTypeMapping TypeName="sql8126141Model.product">
+            <EntityTypeMapping TypeName="mobileModel.product">
               <MappingFragment StoreEntitySet="product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1354,7 +1360,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="productlist">
-            <EntityTypeMapping TypeName="sql8126141Model.productlist">
+            <EntityTypeMapping TypeName="mobileModel.productlist">
               <MappingFragment StoreEntitySet="productlist">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1366,7 +1372,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="region">
-            <EntityTypeMapping TypeName="sql8126141Model.region">
+            <EntityTypeMapping TypeName="mobileModel.region">
               <MappingFragment StoreEntitySet="region">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1377,7 +1383,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="role">
-            <EntityTypeMapping TypeName="sql8126141Model.role">
+            <EntityTypeMapping TypeName="mobileModel.role">
               <MappingFragment StoreEntitySet="role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1388,7 +1394,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="stock">
-            <EntityTypeMapping TypeName="sql8126141Model.stock">
+            <EntityTypeMapping TypeName="mobileModel.stock">
               <MappingFragment StoreEntitySet="stock">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1401,7 +1407,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="stockdetail">
-            <EntityTypeMapping TypeName="sql8126141Model.stockdetail">
+            <EntityTypeMapping TypeName="mobileModel.stockdetail">
               <MappingFragment StoreEntitySet="stockdetail">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />

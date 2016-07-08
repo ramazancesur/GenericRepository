@@ -25,6 +25,8 @@ namespace Ws.Model
         public Nullable<int> isActive { get; set; }
         public string title { get; set; }
         public string note { get; set; }
+        public string name { get; set; }
+        public string surname { get; set; }
         public int contactID { get; set; }
         public int addressID { get; set; }
     
