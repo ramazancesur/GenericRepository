@@ -17,6 +17,6 @@
     }
     public enum ContactType
     {
-        FIRM,EMPLOYEE,OWNER,PASSANGER_CAR
+        FIRM,EMPLOYEE,OWNER,PASSANGER_CAR,CLIENT
     }
 }
