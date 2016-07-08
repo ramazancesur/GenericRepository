@@ -33,12 +33,81 @@ namespace Ws.EntityResources.Satici
             roleDao = new RoleDao();
             contactDao = new ContactDao();
         }
+        public List<SaticiDTO> allSaticiDTO()
+        {
+            List<SaticiDTO> lstSaticiDto = new List<SaticiDTO>();
+            SaticiDTO satici;
+            List<employee> lstEmployee = employeeDao.FindBy(x => x.isActive == 1).ToList();
+            foreach (var emp in lstEmployee)
+            {
+                // *********** employee ********** //
+                satici = new SaticiDTO();
+                satici.isActive = 1;
+                if (emp.creationDate.HasValue)
+                    satici.createTime = emp.creationDate.Value;
+                else
+                {
+                    satici.createTime = DateTime.Now;
+                    emp.creationDate = DateTime.Now;
+                    employeeDao.Edit(emp);
+                }
+                if (emp.updateDate.HasValue)
+                    satici.updateTime = emp.updateDate.Value;
+                else
+                {
+                    emp.updateDate = DateTime.Now;
+                    employeeDao.Edit(emp);
+                    satici.updateTime = DateTime.Now;
+                }
+
+                satici.version = 1;
+                satici.name = emp.username;
+                satici.passwd = emp.password;
+                try
+                {
+                    satici.roleName = roleDao.FindBy(x => x.id == emp.roleID).FirstOrDefault().name;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                satici.sallerName = emp.username;
+                
+                // *********** firm islemleri ************** //
+                           
+                firm firm = firmDao.FindBy(x => x.id == emp.firmID).FirstOrDefault();
+                satici.campanyName = firm.name;
+                try
+                {
+                    satici.address = addresDao.findById(firm.addressID).address1;
+                }
+                catch(Exception ex)
+                {
+                    satici.address = "";
+                    Console.WriteLine(ex.Message);
+                }
+                satici.companyLogoPath = firm.logo;
+                
+                // *********** Contact table ********** //
+                contact contact = contactDao.FindBy(z => z.id == firm.contactID).FirstOrDefault();
+                if (contact.contactType.HasValue)
+                {
+                    ContactType conType = (ContactType)Enum.ToObject(typeof(ContactType), contact.contactType.Value);
+                    satici.contactType = conType;
+                }
+                satici.phoneNumber = contact.value;
+                satici.id = emp.id;
+                lstSaticiDto.Add(satici);
+            }
+
+            return lstSaticiDto;
+        }
         public SaticiDTO deleteSatici(SaticiDTO satici, CalisanDTO calisan)
         {
             // ********* address deleted ******** //
             List<address> lstAddress = addresDao.FindBy(x => x.address1 == satici.address
                                                && x.isActive == 1).ToList();
-            foreach (var address in lstAddress )
+            foreach (var address in lstAddress)
             {
                 address.updateDate = DateTime.Now;
                 address.isActive = 0;
