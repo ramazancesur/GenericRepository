@@ -102,9 +102,9 @@
     <Compile Include="EntityDao\Stock\StockDao.cs" />
     <Compile Include="EntityResources\Calisan\CalisanResources.cs" />
     <Compile Include="EntityResources\Firma\FirmResources.cs" />
-    <Compile Include="EntityResources\Harcama\HarcamaResources.cs" />
     <Compile Include="EntityResources\Musteri\MusteriResources.cs" />
     <Compile Include="EntityResources\Satici\SaticiResources.cs" />
+    <Compile Include="EntityResources\Siparis\SiparisResources.cs" />
     <Compile Include="EntityResources\Urun\UrunResources.cs" />
     <Compile Include="Helper\CreateLog.cs" />
     <Compile Include="Class1.cs" />
@@ -178,13 +178,12 @@
     <Compile Include="RestWs\Dto\BaseDTO.cs" />
     <Compile Include="RestWs\Dto\CalisanDTO.cs" />
     <Compile Include="RestWs\Dto\FirmDTO.cs" />
-    <Compile Include="RestWs\Dto\HarcamaDTO.cs" />
     <Compile Include="RestWs\Dto\LisanceDTO.cs" />
     <Compile Include="RestWs\Dto\LogDTO.cs" />
     <Compile Include="RestWs\Dto\MusteriDTO.cs" />
     <Compile Include="RestWs\Dto\SaticiDTO.cs" />
     <Compile Include="RestWs\Dto\SatisRaporlariDTO.cs" />
-    <Compile Include="RestWs\Dto\SiparisListesi.cs" />
+    <Compile Include="RestWs\Dto\Siparis.cs" />
     <Compile Include="RestWs\Dto\UrunDTO.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -209,7 +208,6 @@
   <ItemGroup>
     <Folder Include="EntityResources\Lisans\" />
     <Folder Include="EntityResources\SatisRaporlama\" />
-    <Folder Include="EntityResources\Siparis\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

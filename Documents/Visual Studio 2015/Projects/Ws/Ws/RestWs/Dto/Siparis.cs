@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Ws.RestWs.Dto
 {
-    public class SiparisListesi:BaseDTO
+    public class Siparis:BaseDTO
     {
         public MusteriDTO musteri { get; set; }
         public double totalAmount { get; set; }
