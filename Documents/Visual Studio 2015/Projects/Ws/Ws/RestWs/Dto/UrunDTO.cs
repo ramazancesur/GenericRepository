@@ -9,5 +9,7 @@ namespace Ws.RestWs.Dto
         public int remain { get; set; }
         public DateTime commingDate { get; set; }
         public FirmDTO firmDTO { get; set; }
+        public int unitSize { get; set; }
     }
+
 }

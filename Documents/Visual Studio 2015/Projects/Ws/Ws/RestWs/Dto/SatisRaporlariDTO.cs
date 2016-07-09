@@ -9,7 +9,7 @@ namespace Ws.RestWs.Dto
     public class SatisRaporlariDTO:BaseDTO
     {
         public ReportType raportType { get; set; }
-        public List<Siparis> lstSiparisListesi { get; set; }
+        public List<SiparisDTO> lstSiparisListesi { get; set; }
         //Net Kar
         public double purePrefit { get; set; }
     }

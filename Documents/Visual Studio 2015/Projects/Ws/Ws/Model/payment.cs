@@ -27,6 +27,7 @@ namespace Ws.Model
         public Nullable<float> price { get; set; }
         public Nullable<System.DateTime> paymentDate { get; set; }
         public Nullable<int> paymentType { get; set; }
+        public Nullable<int> remainPrice { get; set; }
     
         public virtual ICollection<order> order { get; set; }
         public virtual ICollection<paymentdetail> paymentdetail { get; set; }

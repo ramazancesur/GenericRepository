@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="mobileModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="mobileModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="address">
           <Key>
             <PropertyRef Name="id" />
@@ -94,6 +94,7 @@
           <Property Name="isActive" Type="int" />
           <Property Name="deliveryStatus" Type="int" />
           <Property Name="deliveryDate" Type="datetime" Precision="0" />
+          <Property Name="totalPrice" Type="int" />
           <Property Name="firmID" Type="int" Nullable="false" />
           <Property Name="clientID" Type="int" Nullable="false" />
           <Property Name="paymentID" Type="int" Nullable="false" />
@@ -125,6 +126,7 @@
           <Property Name="price" Type="float" />
           <Property Name="paymentDate" Type="datetime" Precision="0" />
           <Property Name="paymentType" Type="int" />
+          <Property Name="remainPrice" Type="int" />
         </EntityType>
         <EntityType Name="paymentdetail">
           <Key>
@@ -572,8 +574,7 @@
             <End Role="stockdetail" EntitySet="stockdetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mobileModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -694,6 +695,7 @@
           <NavigationProperty Name="firm" Relationship="Self.fkOrderFirmID" FromRole="order" ToRole="firm" />
           <NavigationProperty Name="orderdetail" Relationship="Self.fkOrderListOrderID" FromRole="order" ToRole="orderdetail" />
           <NavigationProperty Name="payment" Relationship="Self.fkOrderPaymentID" FromRole="order" ToRole="payment" />
+          <Property Name="totalPrice" Type="Int32" />
         </EntityType>
         <EntityType Name="orderdetail">
           <Key>
@@ -725,6 +727,7 @@
           <Property Name="paymentType" Type="Int32" />
           <NavigationProperty Name="order" Relationship="Self.fkOrderPaymentID" FromRole="payment" ToRole="order" />
           <NavigationProperty Name="paymentdetail" Relationship="Self.fkpaymentDetailPaymentID" FromRole="payment" ToRole="paymentdetail" />
+          <Property Name="remainPrice" Type="Int32" />
         </EntityType>
         <EntityType Name="paymentdetail">
           <Key>
@@ -1280,6 +1283,7 @@
           <EntitySetMapping Name="order">
             <EntityTypeMapping TypeName="mobileModel.order">
               <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
                 <ScalarProperty Name="updateDate" ColumnName="updateDate" />
@@ -1312,6 +1316,7 @@
           <EntitySetMapping Name="payment">
             <EntityTypeMapping TypeName="mobileModel.payment">
               <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="remainPrice" ColumnName="remainPrice" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
                 <ScalarProperty Name="updateDate" ColumnName="updateDate" />

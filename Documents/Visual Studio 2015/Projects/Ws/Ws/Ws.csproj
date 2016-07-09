@@ -181,9 +181,12 @@
     <Compile Include="RestWs\Dto\LisanceDTO.cs" />
     <Compile Include="RestWs\Dto\LogDTO.cs" />
     <Compile Include="RestWs\Dto\MusteriDTO.cs" />
+    <Compile Include="RestWs\Dto\OdemeDetayDTO.cs" />
+    <Compile Include="RestWs\Dto\OdemeDTO.cs" />
     <Compile Include="RestWs\Dto\SaticiDTO.cs" />
     <Compile Include="RestWs\Dto\SatisRaporlariDTO.cs" />
-    <Compile Include="RestWs\Dto\Siparis.cs" />
+    <Compile Include="RestWs\Dto\SiparisDetailDTO.cs" />
+    <Compile Include="RestWs\Dto\SiparisDTO.cs" />
     <Compile Include="RestWs\Dto\UrunDTO.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,7 @@ namespace Ws.Model
         public int clientID { get; set; }
         public int paymentID { get; set; }
         public int employeeID { get; set; }
+        public Nullable<int> totalPrice { get; set; }
     
         public virtual client client { get; set; }
         public virtual employee employee { get; set; }

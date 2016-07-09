@@ -59,7 +59,7 @@ namespace Ws.EntityResources.Urun
                 }
                 else
                 {
-                    product.creationDate = DateTime.Now;
+                    product.creationDate =urun.createTime;
                     productDao.Edit(product);
                     urun.createTime = DateTime.Now;
                 }
@@ -126,7 +126,7 @@ namespace Ws.EntityResources.Urun
             }
             else
             {
-                firm.creationDate = DateTime.Now;
+                firm.creationDate =urun.createTime;
                 firmDao.Edit(firm);
                 urun.createTime = DateTime.Now;
             }
@@ -214,7 +214,7 @@ namespace Ws.EntityResources.Urun
 
             // ************** Product Kayıt Işlemi **************** //
             product.name = urunDTO.productName;
-            product.creationDate = DateTime.Now;
+            product.creationDate = urunDTO.createTime;
             product.updateDate = DateTime.Now;
             productDao.Add(product);
             createLog.SaveLog<product>(createdCalisanDTO, product, 1);
@@ -222,14 +222,14 @@ namespace Ws.EntityResources.Urun
             // Product List= Product Detail Tablosu  
             //  ************** ProductList Kayıt Işlemi **************** //
             productList.productID = product.id;
-            productList.creationDate = DateTime.Now;
+            productList.creationDate = urunDTO.createTime;
             productList.updateDate = DateTime.Now;
             productList.firmID = urunDTO.firmDTO.ID;
             productListDao.Add(productList);
             createLog.SaveLog<productlist>(createdCalisanDTO, productList, 1);
 
             // ************* Price Tablosuna Kayıt İşlemi ************ //
-            price.creationDate = DateTime.Now;
+            price.creationDate =urunDTO.createTime;
             price.price1 = (float)urunDTO.price;
             price.updateDate = DateTime.Now;
             price.productID = product.id;
@@ -240,14 +240,14 @@ namespace Ws.EntityResources.Urun
             stock.firmID = productList.firmID;
             stock.location = urunDTO.firmDTO.address;
             stock.name = product.name;
-            stock.creationDate = DateTime.Now;
+            stock.creationDate =urunDTO.createTime;
             stock.updateDate = DateTime.Now;
             stockDao.Add(stock);
             createLog.SaveLog(createdCalisanDTO, stock, 1);
 
             // ********* StockDetail Tablosu insert *********** //
 
-            stockDetail.creationDate = DateTime.Now;
+            stockDetail.creationDate =urunDTO.createTime;
             stockDetail.updateDate = DateTime.Now;
             stockDetail.priceID = price.id;
             stockDetail.stockID = stock.id;
