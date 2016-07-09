@@ -43,6 +43,7 @@
         <AssociationConnector Association="mobileModel.fkStockListPriceID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkProductListProductID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkStockListStockID" ManuallyRouted="false" />
+        <AssociationConnector Association="mobileModel.fkPaymentClient" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

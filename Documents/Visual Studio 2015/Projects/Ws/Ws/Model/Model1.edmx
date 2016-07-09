@@ -127,6 +127,7 @@
           <Property Name="paymentDate" Type="datetime" Precision="0" />
           <Property Name="paymentType" Type="int" />
           <Property Name="remainPrice" Type="int" />
+          <Property Name="clientID" Type="int" />
         </EntityType>
         <EntityType Name="paymentdetail">
           <Key>
@@ -387,6 +388,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkPaymentClient">
+          <End Role="client" Type="Self.client" Multiplicity="0..1" />
+          <End Role="payment" Type="Self.payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fkpaymentDetailPaymentID">
           <End Role="payment" Type="Self.payment" Multiplicity="1" />
           <End Role="paymentdetail" Type="Self.paymentdetail" Multiplicity="*" />
@@ -545,6 +558,10 @@
             <End Role="payment" EntitySet="payment" />
             <End Role="order" EntitySet="order" />
           </AssociationSet>
+          <AssociationSet Name="fkPaymentClient" Association="Self.fkPaymentClient">
+            <End Role="client" EntitySet="client" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
           <AssociationSet Name="fkpaymentDetailPaymentID" Association="Self.fkpaymentDetailPaymentID">
             <End Role="payment" EntitySet="payment" />
             <End Role="paymentdetail" EntitySet="paymentdetail" />
@@ -609,6 +626,7 @@
           <NavigationProperty Name="address" Relationship="Self.fkClientAddressID" FromRole="client" ToRole="address" />
           <NavigationProperty Name="contact" Relationship="Self.fkClientContactID" FromRole="client" ToRole="contact" />
           <NavigationProperty Name="order" Relationship="Self.fkOrderClientID" FromRole="client" ToRole="order" />
+          <NavigationProperty Name="payment" Relationship="mobileModel.fkPaymentClient" FromRole="client" ToRole="payment" />
         </EntityType>
         <EntityType Name="contact">
           <Key>
@@ -728,6 +746,8 @@
           <NavigationProperty Name="order" Relationship="Self.fkOrderPaymentID" FromRole="payment" ToRole="order" />
           <NavigationProperty Name="paymentdetail" Relationship="Self.fkpaymentDetailPaymentID" FromRole="payment" ToRole="paymentdetail" />
           <Property Name="remainPrice" Type="Int32" />
+          <Property Name="clientID" Type="Int32" />
+          <NavigationProperty Name="client" Relationship="mobileModel.fkPaymentClient" FromRole="payment" ToRole="client" />
         </EntityType>
         <EntityType Name="paymentdetail">
           <Key>
@@ -1188,7 +1208,23 @@
             <End Role="stock" EntitySet="stock" />
             <End Role="stockdetail" EntitySet="stockdetail" />
           </AssociationSet>
+          <AssociationSet Name="fkPaymentClient" Association="mobileModel.fkPaymentClient">
+            <End Role="client" EntitySet="client" />
+            <End Role="payment" EntitySet="payment" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="fkPaymentClient">
+          <End Type="mobileModel.client" Role="client" Multiplicity="0..1" />
+          <End Type="mobileModel.payment" Role="payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="payment">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1316,6 +1352,7 @@
           <EntitySetMapping Name="payment">
             <EntityTypeMapping TypeName="mobileModel.payment">
               <MappingFragment StoreEntitySet="payment">
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
                 <ScalarProperty Name="remainPrice" ColumnName="remainPrice" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />

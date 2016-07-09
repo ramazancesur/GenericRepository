@@ -28,8 +28,10 @@ namespace Ws.Model
         public Nullable<System.DateTime> paymentDate { get; set; }
         public Nullable<int> paymentType { get; set; }
         public Nullable<int> remainPrice { get; set; }
+        public Nullable<int> clientID { get; set; }
     
         public virtual ICollection<order> order { get; set; }
         public virtual ICollection<paymentdetail> paymentdetail { get; set; }
+        public virtual client client { get; set; }
     }
 }

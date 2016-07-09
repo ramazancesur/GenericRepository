@@ -17,6 +17,7 @@ namespace Ws.Model
         public client()
         {
             this.order = new HashSet<order>();
+            this.payment = new HashSet<payment>();
         }
     
         public int id { get; set; }
@@ -33,5 +34,6 @@ namespace Ws.Model
         public virtual address address { get; set; }
         public virtual contact contact { get; set; }
         public virtual ICollection<order> order { get; set; }
+        public virtual ICollection<payment> payment { get; set; }
     }
 }
