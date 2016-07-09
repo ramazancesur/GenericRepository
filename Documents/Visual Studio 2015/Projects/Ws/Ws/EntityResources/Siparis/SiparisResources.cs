@@ -67,14 +67,21 @@ namespace Ws.EntityResources.Siparis
         }
        
 
-        public SiparisDTO createSiparisDTO(SiparisDTO siparis, CalisanDTO calisan)
+        public SiparisDTO createSiparisDTO(SiparisDTO siparis,OdemeDTO odeme,CalisanDTO calisan)
         {
+            // ********** Payment *********** //
             payment payment = new payment();
             payment.isActive = 1;
             payment.creationDate = siparis.createTime;
             payment.updateDate = DateTime.Now;
-            payment.paymentDate=siparis.
+            payment.paymentDate = odeme.createTime;
+            payment.price = odeme.price;
+            payment.remainPrice = odeme.remainCost;
+            payment.paymentType =(int) odeme.paymentType;
+            paymentDao.Add(payment);
+            createLog.SaveLog(calisan, payment, 1);
 
+            // ****** Order ******* //
             order order = new order();
             order.creationDate = siparis.createTime;
             order.updateDate = DateTime.Now;
@@ -86,9 +93,12 @@ namespace Ws.EntityResources.Siparis
             order.paymentID = payment.id;
             order.firmID = siparis.calisanDTO.firmID;
             orderDao.Add(order);
+            createLog.SaveLog(calisan, order, 1);
+
+            // ********* Order Detail ******* //
             orderdetail orderDetail;
             foreach (var siparisDetail in siparis.lstSiparisDetail)
-            {
+            { 
                 orderDetail = new orderdetail();
                 orderDetail.creationDate = siparis.createTime;
                 orderDetail.updateDate = DateTime.Now;
@@ -107,10 +117,6 @@ namespace Ws.EntityResources.Siparis
                 orderDetail.unitType =(int) siparisDetail.unitType;
                 orderDetailDao.Add(orderDetail);
             }
-
-
-
-
 
             return siparis;
         }
