@@ -4,7 +4,7 @@ using Ws.Model;
 
 namespace test2.EntityDao.PaymentDetails
 {
-    public class PaymentDetailsDao: GenericRepository<sql8126141Entities,payment>
+    public class PaymentDetailsDao: GenericRepository<sql8126141Entities,paymentdetail>
     {
     }
 }

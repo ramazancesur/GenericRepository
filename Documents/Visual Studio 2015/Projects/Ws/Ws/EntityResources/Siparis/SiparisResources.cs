@@ -18,22 +18,6 @@ namespace Ws.EntityResources.Siparis
 {
     public class SiparisResources
     {
-        /*
-         *         public MusteriDTO musteri { get; set; }
-        public double totalAmount { get; set; }
-        public List<UrunDTO> lstUruns { get; set; }
-        //Musteri Sipariş Notu
-        public string orderNotesCustom { get; set; }
-        //Satıcı Sipariş Notu
-        public string orderNotesSaler { get; set; }
-        //KalanBorc
-        public double remainDept { get; set; }
-        //Teslimat Tarihi
-        public DateTime deliveryDate { get; set; }
-
-
-        Ana tablomuz order 
-        */
         PaymentDao paymentDao;
         PaymentDetailsDao paymentDetailDao;
         OrderDao orderDao;
@@ -61,6 +45,7 @@ namespace Ws.EntityResources.Siparis
             //  İlerde Kullanılacak
             stockDao = new StockDao();
             stockDetailDao = new StockDetailsDao();
+
             createLog = new CreateLog();
             priceDao = new PriceDao();
             empDao = new EmployeeDao();
@@ -80,6 +65,18 @@ namespace Ws.EntityResources.Siparis
             payment.paymentType =(int) odeme.paymentType;
             paymentDao.Add(payment);
             createLog.SaveLog(calisan, payment, 1);
+
+            //******* PaymentOrder ******* //
+            paymentdetail paymentDetail = new paymentdetail();
+            paymentDetail.isActive = 1;
+            paymentDetail.creationDate = siparis.createTime;
+            paymentDetail.updateDate = DateTime.Now;
+            paymentDetail.paidAmount = odeme.price;
+            paymentDetail.paymentID = payment.id;
+            paymentDetail.oldPrice = payment.remainPrice;
+            paymentDetail.newPrice = paymentDetail.oldPrice - paymentDetail.paidAmount;
+            paymentDetailDao.Add(paymentDetail);
+            createLog.SaveLog(calisan, paymentDetail, 1);
 
             // ****** Order ******* //
             order order = new order();
@@ -116,6 +113,7 @@ namespace Ws.EntityResources.Siparis
                 orderDetail.unitSize = siparisDetail.unitSize;
                 orderDetail.unitType =(int) siparisDetail.unitType;
                 orderDetailDao.Add(orderDetail);
+                createLog.SaveLog(calisan, orderDetail, 1);
             }
 
             return siparis;
