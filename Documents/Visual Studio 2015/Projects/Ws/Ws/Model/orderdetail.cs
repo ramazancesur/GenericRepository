@@ -24,8 +24,10 @@ namespace Ws.Model
         public Nullable<int> isApproved { get; set; }
         public int orderID { get; set; }
         public int priceID { get; set; }
+        public Nullable<int> productID { get; set; }
     
         public virtual order order { get; set; }
         public virtual price price { get; set; }
+        public virtual product product { get; set; }
     }
 }

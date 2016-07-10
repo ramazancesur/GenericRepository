@@ -100,7 +100,7 @@ namespace Ws.EntityResources.Urun
             }
             return lstUrunler;
         }
-        private FirmDTO findByFirm(CalisanDTO calisanDTO,UrunDTO urun)
+        public FirmDTO findByFirm(CalisanDTO calisanDTO,UrunDTO urun)
         {
             // ************* Firm Listeleme de de aynısı kullanılacak  *************** //
             firm firm = firmDao.FindBy(x => x.id == calisanDTO.firmID).LastOrDefault();

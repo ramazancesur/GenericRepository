@@ -28,6 +28,47 @@ namespace Ws.EntityResources.Musteri
             createLog = new CreateLog();
             contactDao = new ContactDao();
         }
+        public MusteriDTO findMusteriByClient(client client)
+        {
+            MusteriDTO musteri = new MusteriDTO();
+            musteri.ID = client.id;
+            if (client.creationDate.HasValue)
+            {
+                musteri.createTime = client.creationDate.Value;
+            }
+            else
+            {
+                client.creationDate = DateTime.Now;
+                clientDao.Edit(client);
+                musteri.createTime = client.creationDate.Value;
+            }
+
+            if (client.updateDate.HasValue)
+            {
+                musteri.updateTime = client.updateDate.Value;
+            }
+            else
+            {
+                client.updateDate = DateTime.Now;
+                clientDao.Edit(client);
+                musteri.updateTime = client.updateDate.Value;
+            }
+            musteri.isActive = 1;
+            musteri.name = client.name;
+            musteri.note = client.note;
+            musteri.surname = client.surname;
+            musteri.clientName = client.name;
+            musteri.version = 1;
+
+            contact contact = contactDao.FindBy(x => x.id == client.contactID).LastOrDefault();
+            musteri.phoneNumber1 = contact.value;
+
+            address addres = addressDao.findById(client.addressID);
+            musteri.address = addres.address1;
+            return musteri;
+
+        }
+
         #region allMusteri
         public List<MusteriDTO> lstMusteriDTO()
         {
@@ -37,41 +78,7 @@ namespace Ws.EntityResources.Musteri
             foreach (var client in lstClient)
             {
                 musteri = new MusteriDTO();
-                musteri.ID = client.id;
-                if(client.creationDate.HasValue)
-                {
-                    musteri.createTime = client.creationDate.Value;
-                }
-                else
-                {
-                    client.creationDate = DateTime.Now;
-                    clientDao.Edit(client);
-                    musteri.createTime = client.creationDate.Value;
-                }
-
-                if (client.updateDate.HasValue)
-                {
-                    musteri.updateTime = client.updateDate.Value;
-                }
-                else
-                {
-                    client.updateDate = DateTime.Now;
-                    clientDao.Edit(client);
-                    musteri.updateTime = client.updateDate.Value;
-                }
-                musteri.isActive = 1;
-                musteri.name = client.name;
-                musteri.note = client.note;
-                musteri.surname = client.surname;
-                musteri.clientName = client.name;
-                musteri.version = 1;
-
-                contact contact = contactDao.FindBy(x => x.id == client.contactID).LastOrDefault();
-                musteri.phoneNumber1 = contact.value;
-            
-                address addres = addressDao.findById(client.addressID);
-                musteri.address = addres.address1;
-
+                musteri = findMusteriByClient(client);
                 lstMusteri.Add(musteri);
             }
 

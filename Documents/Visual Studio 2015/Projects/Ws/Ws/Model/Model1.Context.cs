@@ -32,7 +32,6 @@ namespace Ws.Model
         public DbSet<firm> firm { get; set; }
         public DbSet<log> log { get; set; }
         public DbSet<order> order { get; set; }
-        public DbSet<orderdetail> orderdetail { get; set; }
         public DbSet<payment> payment { get; set; }
         public DbSet<paymentdetail> paymentdetail { get; set; }
         public DbSet<price> price { get; set; }
@@ -42,5 +41,6 @@ namespace Ws.Model
         public DbSet<role> role { get; set; }
         public DbSet<stock> stock { get; set; }
         public DbSet<stockdetail> stockdetail { get; set; }
+        public DbSet<orderdetail> orderdetail { get; set; }
     }
 }

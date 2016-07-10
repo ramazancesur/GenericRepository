@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="mobileModel.firm" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="mobileModel.log" Width="1.5" PointX="13.5" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="mobileModel.order" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="mobileModel.orderdetail" Width="1.5" PointX="13.5" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="mobileModel.payment" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="mobileModel.paymentdetail" Width="1.5" PointX="8.25" PointY="20.25" IsExpanded="true" />
         <EntityTypeShape EntityType="mobileModel.price" Width="1.5" PointX="11.25" PointY="0.75" IsExpanded="true" />
@@ -35,15 +34,17 @@
         <AssociationConnector Association="mobileModel.fkOrderFirmID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkProductListFirmID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkStockFirmID" ManuallyRouted="false" />
-        <AssociationConnector Association="mobileModel.fkOrderListOrderID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkOrderPaymentID" ManuallyRouted="false" />
-        <AssociationConnector Association="mobileModel.fkOrderListPriceID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkpaymentDetailPaymentID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkPriceProductID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkStockListPriceID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkProductListProductID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkStockListStockID" ManuallyRouted="false" />
         <AssociationConnector Association="mobileModel.fkPaymentClient" />
+        <EntityTypeShape EntityType="mobileModel.orderdetail" Width="1.5" PointX="13.5" PointY="3.625" />
+        <AssociationConnector Association="mobileModel.fkOrderListOrderID" />
+        <AssociationConnector Association="mobileModel.fkOrderListPriceID" />
+        <AssociationConnector Association="mobileModel.fkOrderListProductID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

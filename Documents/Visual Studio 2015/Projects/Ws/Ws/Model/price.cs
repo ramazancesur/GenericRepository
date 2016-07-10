@@ -16,8 +16,8 @@ namespace Ws.Model
     {
         public price()
         {
-            this.orderdetail = new HashSet<orderdetail>();
             this.stockdetail = new HashSet<stockdetail>();
+            this.orderdetail = new HashSet<orderdetail>();
         }
     
         public int id { get; set; }
@@ -27,8 +27,8 @@ namespace Ws.Model
         public Nullable<float> price1 { get; set; }
         public int productID { get; set; }
     
-        public virtual ICollection<orderdetail> orderdetail { get; set; }
         public virtual product product { get; set; }
         public virtual ICollection<stockdetail> stockdetail { get; set; }
+        public virtual ICollection<orderdetail> orderdetail { get; set; }
     }
 }

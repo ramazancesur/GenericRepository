@@ -5,6 +5,7 @@ using test2.EntityDao.Address;
 using test2.EntityDao.Employee;
 using test2.EntityDao.Firm;
 using test2.EntityDao.Log;
+using Ws.Helper;
 using Ws.Model;
 using Ws.RestWs.Dto;
 
@@ -16,12 +17,14 @@ namespace Ws.EntityResources.Calisan
         EmployeeDao employeeDao;
         AdressDao addresDao;
         FirmDao firmDao;
+        CreateLog createLog;
         private void init()
         {
             logDao = new LogDao();
             employeeDao = new EmployeeDao();
             addresDao = new AdressDao();
             firmDao = new FirmDao();
+            createLog = new CreateLog();
         }
         public CalisanResources()
         {
@@ -40,23 +43,10 @@ namespace Ws.EntityResources.Calisan
             employee.roleID = calisanDTO.roleID;
             employee.title = calisanDTO.title;
             employee.updateDate = DateTime.Now;
-            employee.creationDate = DateTime.Now;
+            employee.creationDate = calisanDTO.createTime;
             employeeDao.Add(employee);
             // *************** Employee Creation End ****************** //
-            #region log tablosu için
-            log log = new log();
-            log.isActive = 1;
-            if (createdCalisanDTO.nameSurname != null)
-            {
-                log.newValue = "Yeni calisan Eklendi " + calisanDTO.nameSurname + "su id ye sahip " + calisanDTO.id + " şu kişi tarafondan " + createdCalisanDTO.id;
-            }
-            log.tableName = "firm";
-            log.columnName = "all Columns";
-            log.creationDate = DateTime.Now;
-            log.employeeID = calisanDTO.id;
-            log.updateDate = DateTime.Now;
-            logDao.Add(log);
-            #endregion
+            createLog.SaveLog(calisanDTO, employee, 1);
             return calisanDTO;
         }
         #endregion
@@ -122,7 +112,7 @@ namespace Ws.EntityResources.Calisan
                     calisan.updateTime = emp.updateDate.Value;
                 }
                 calisan.userName = emp.username;
-                calisan.version += 1;
+                calisan.version = 1;
                 lstCalisan.Add(calisan);
             }
             return lstCalisan;
@@ -142,21 +132,7 @@ namespace Ws.EntityResources.Calisan
             {
                 return null;
             }
-            // ************** Log Kaydı Databaseye Atıldı ************** //
-            #region Logs
-            log log = new log();
-            log.isActive = 1;
-            if (createdCalisanDTO.nameSurname != null)
-            {
-                log.newValue = "Çalışan Guncellendi  " + calisanDTO.nameSurname + "su id ye sahip " + calisanDTO.id + " şu kişi tarafondan " + createdCalisanDTO.id;
-            }
-            log.tableName = "firm";
-            log.columnName = "all Columns";
-            log.creationDate = DateTime.Now;
-            log.employeeID = calisanDTO.id;
-            log.updateDate = DateTime.Now;
-            logDao.Add(log);
-            #endregion
+            createLog.SaveLog(calisanDTO, emp, 2);
             return calisanDTO;
         }
         #endregion
@@ -175,21 +151,7 @@ namespace Ws.EntityResources.Calisan
             {
                 return null;
             }
-            // ************** Log Kaydı Databaseye Atıldı ************** //
-            #region Logs
-            log log = new log();
-            log.isActive = 1;
-            if (createdCalisanDTO.nameSurname != null)
-            {
-                log.newValue = "Çalışan Silindi  " + calisanDTO.nameSurname + "su id ye sahip " + calisanDTO.id + " şu kişi tarafondan " + createdCalisanDTO.id;
-            }
-            log.tableName = "firm";
-            log.columnName = "all Columns";
-            log.creationDate = DateTime.Now;
-            log.employeeID = calisanDTO.id;
-            log.updateDate = DateTime.Now;
-            logDao.Add(log);
-            #endregion
+            createLog.SaveLog(calisanDTO,emp, 0);
             return calisanDTO;
         }
 

@@ -30,11 +30,12 @@ namespace Ws.Model
         public int paymentID { get; set; }
         public int employeeID { get; set; }
         public Nullable<int> totalPrice { get; set; }
+        public string Notes { get; set; }
     
         public virtual client client { get; set; }
         public virtual employee employee { get; set; }
         public virtual firm firm { get; set; }
-        public virtual ICollection<orderdetail> orderdetail { get; set; }
         public virtual payment payment { get; set; }
+        public virtual ICollection<orderdetail> orderdetail { get; set; }
     }
 }

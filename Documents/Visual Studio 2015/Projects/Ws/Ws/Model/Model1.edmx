@@ -99,6 +99,7 @@
           <Property Name="clientID" Type="int" Nullable="false" />
           <Property Name="paymentID" Type="int" Nullable="false" />
           <Property Name="employeeID" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="4000" />
         </EntityType>
         <EntityType Name="orderdetail">
           <Key>
@@ -114,6 +115,7 @@
           <Property Name="isApproved" Type="int" />
           <Property Name="orderID" Type="int" Nullable="false" />
           <Property Name="priceID" Type="int" Nullable="false" />
+          <Property Name="productID" Type="int" />
         </EntityType>
         <EntityType Name="payment">
           <Key>
@@ -376,6 +378,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkOrderListProductID">
+          <End Role="product" Type="Self.product" Multiplicity="0..1" />
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fkOrderPaymentID">
           <End Role="payment" Type="Self.payment" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
@@ -554,6 +568,10 @@
             <End Role="price" EntitySet="price" />
             <End Role="orderdetail" EntitySet="orderdetail" />
           </AssociationSet>
+          <AssociationSet Name="fkOrderListProductID" Association="Self.fkOrderListProductID">
+            <End Role="product" EntitySet="product" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
           <AssociationSet Name="fkOrderPaymentID" Association="Self.fkOrderPaymentID">
             <End Role="payment" EntitySet="payment" />
             <End Role="order" EntitySet="order" />
@@ -711,26 +729,10 @@
           <NavigationProperty Name="client" Relationship="Self.fkOrderClientID" FromRole="order" ToRole="client" />
           <NavigationProperty Name="employee" Relationship="Self.fkOrderEmployeeID" FromRole="order" ToRole="employee" />
           <NavigationProperty Name="firm" Relationship="Self.fkOrderFirmID" FromRole="order" ToRole="firm" />
-          <NavigationProperty Name="orderdetail" Relationship="Self.fkOrderListOrderID" FromRole="order" ToRole="orderdetail" />
           <NavigationProperty Name="payment" Relationship="Self.fkOrderPaymentID" FromRole="order" ToRole="payment" />
           <Property Name="totalPrice" Type="Int32" />
-        </EntityType>
-        <EntityType Name="orderdetail">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="creationDate" Type="DateTime" />
-          <Property Name="updateDate" Type="DateTime" />
-          <Property Name="isActive" Type="Int32" />
-          <Property Name="amount" Type="Int32" />
-          <Property Name="unitType" Type="Int32" />
-          <Property Name="unitSize" Type="Int32" />
-          <Property Name="isApproved" Type="Int32" />
-          <Property Name="orderID" Type="Int32" Nullable="false" />
-          <Property Name="priceID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="order" Relationship="Self.fkOrderListOrderID" FromRole="orderdetail" ToRole="order" />
-          <NavigationProperty Name="price" Relationship="Self.fkOrderListPriceID" FromRole="orderdetail" ToRole="price" />
+          <NavigationProperty Name="orderdetail" Relationship="mobileModel.fkOrderListOrderID" FromRole="order" ToRole="orderdetail" />
+          <Property Name="Notes" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="payment">
           <Key>
@@ -773,9 +775,9 @@
           <Property Name="isActive" Type="Int32" />
           <Property Name="price1" Type="Single" />
           <Property Name="productID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="orderdetail" Relationship="Self.fkOrderListPriceID" FromRole="price" ToRole="orderdetail" />
           <NavigationProperty Name="product" Relationship="Self.fkPriceProductID" FromRole="price" ToRole="product" />
           <NavigationProperty Name="stockdetail" Relationship="Self.fkStockListPriceID" FromRole="price" ToRole="stockdetail" />
+          <NavigationProperty Name="orderdetail" Relationship="mobileModel.fkOrderListPriceID" FromRole="price" ToRole="orderdetail" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -788,6 +790,7 @@
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="price" Relationship="Self.fkPriceProductID" FromRole="product" ToRole="price" />
           <NavigationProperty Name="productlist" Relationship="Self.fkProductListProductID" FromRole="product" ToRole="productlist" />
+          <NavigationProperty Name="orderdetail" Relationship="mobileModel.fkOrderListProductID" FromRole="product" ToRole="orderdetail" />
         </EntityType>
         <EntityType Name="productlist">
           <Key>
@@ -1010,18 +1013,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkOrderListOrderID">
-          <End Role="order" Type="Self.order" Multiplicity="1" />
-          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="order">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderdetail">
-              <PropertyRef Name="orderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fkOrderPaymentID">
           <End Role="payment" Type="Self.payment" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
@@ -1031,18 +1022,6 @@
             </Principal>
             <Dependent Role="order">
               <PropertyRef Name="paymentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fkOrderListPriceID">
-          <End Role="price" Type="Self.price" Multiplicity="1" />
-          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="price">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderdetail">
-              <PropertyRef Name="priceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1114,7 +1093,6 @@
           <EntitySet Name="firm" EntityType="Self.firm" />
           <EntitySet Name="log" EntityType="Self.log" />
           <EntitySet Name="order" EntityType="Self.order" />
-          <EntitySet Name="orderdetail" EntityType="Self.orderdetail" />
           <EntitySet Name="payment" EntityType="Self.payment" />
           <EntitySet Name="paymentdetail" EntityType="Self.paymentdetail" />
           <EntitySet Name="price" EntityType="Self.price" />
@@ -1176,17 +1154,9 @@
             <End Role="firm" EntitySet="firm" />
             <End Role="stock" EntitySet="stock" />
           </AssociationSet>
-          <AssociationSet Name="fkOrderListOrderID" Association="Self.fkOrderListOrderID">
-            <End Role="order" EntitySet="order" />
-            <End Role="orderdetail" EntitySet="orderdetail" />
-          </AssociationSet>
           <AssociationSet Name="fkOrderPaymentID" Association="Self.fkOrderPaymentID">
             <End Role="payment" EntitySet="payment" />
             <End Role="order" EntitySet="order" />
-          </AssociationSet>
-          <AssociationSet Name="fkOrderListPriceID" Association="Self.fkOrderListPriceID">
-            <End Role="price" EntitySet="price" />
-            <End Role="orderdetail" EntitySet="orderdetail" />
           </AssociationSet>
           <AssociationSet Name="fkpaymentDetailPaymentID" Association="Self.fkpaymentDetailPaymentID">
             <End Role="payment" EntitySet="payment" />
@@ -1212,6 +1182,19 @@
             <End Role="client" EntitySet="client" />
             <End Role="payment" EntitySet="payment" />
           </AssociationSet>
+          <EntitySet Name="orderdetail" EntityType="mobileModel.orderdetail" />
+          <AssociationSet Name="fkOrderListOrderID" Association="mobileModel.fkOrderListOrderID">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderListPriceID" Association="mobileModel.fkOrderListPriceID">
+            <End Role="price" EntitySet="price" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="fkOrderListProductID" Association="mobileModel.fkOrderListProductID">
+            <End Role="product" EntitySet="product" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="fkPaymentClient">
           <End Type="mobileModel.client" Role="client" Multiplicity="0..1" />
@@ -1222,6 +1205,61 @@
             </Principal>
             <Dependent Role="payment">
               <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creationDate" Type="DateTime" />
+          <Property Name="updateDate" Type="DateTime" />
+          <Property Name="isActive" Type="Int32" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="unitType" Type="Int32" />
+          <Property Name="unitSize" Type="Int32" />
+          <Property Name="isApproved" Type="Int32" />
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="priceID" Type="Int32" Nullable="false" />
+          <Property Name="productID" Type="Int32" />
+          <NavigationProperty Name="order" Relationship="mobileModel.fkOrderListOrderID" FromRole="orderdetail" ToRole="order" />
+          <NavigationProperty Name="price" Relationship="mobileModel.fkOrderListPriceID" FromRole="orderdetail" ToRole="price" />
+          <NavigationProperty Name="product" Relationship="mobileModel.fkOrderListProductID" FromRole="orderdetail" ToRole="product" />
+        </EntityType>
+        <Association Name="fkOrderListOrderID">
+          <End Type="mobileModel.order" Role="order" Multiplicity="1" />
+          <End Type="mobileModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderListPriceID">
+          <End Type="mobileModel.price" Role="price" Multiplicity="1" />
+          <End Type="mobileModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="price">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="priceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkOrderListProductID">
+          <End Type="mobileModel.product" Role="product" Multiplicity="0..1" />
+          <End Type="mobileModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="productID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1319,6 +1357,7 @@
           <EntitySetMapping Name="order">
             <EntityTypeMapping TypeName="mobileModel.order">
               <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="creationDate" ColumnName="creationDate" />
@@ -1330,22 +1369,6 @@
                 <ScalarProperty Name="clientID" ColumnName="clientID" />
                 <ScalarProperty Name="paymentID" ColumnName="paymentID" />
                 <ScalarProperty Name="employeeID" ColumnName="employeeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="orderdetail">
-            <EntityTypeMapping TypeName="mobileModel.orderdetail">
-              <MappingFragment StoreEntitySet="orderdetail">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
-                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="unitType" ColumnName="unitType" />
-                <ScalarProperty Name="unitSize" ColumnName="unitSize" />
-                <ScalarProperty Name="isApproved" ColumnName="isApproved" />
-                <ScalarProperty Name="orderID" ColumnName="orderID" />
-                <ScalarProperty Name="priceID" ColumnName="priceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1460,6 +1483,23 @@
                 <ScalarProperty Name="unitSize" ColumnName="unitSize" />
                 <ScalarProperty Name="priceID" ColumnName="priceID" />
                 <ScalarProperty Name="stockID" ColumnName="stockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderdetail">
+            <EntityTypeMapping TypeName="mobileModel.orderdetail">
+              <MappingFragment StoreEntitySet="orderdetail">
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="priceID" ColumnName="priceID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="isApproved" ColumnName="isApproved" />
+                <ScalarProperty Name="unitSize" ColumnName="unitSize" />
+                <ScalarProperty Name="unitType" ColumnName="unitType" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="updateDate" ColumnName="updateDate" />
+                <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
