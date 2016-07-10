@@ -22,6 +22,9 @@ using Ws.RestWs.Dto;
 
 namespace Ws.EntityResources.Siparis
 {
+    /// <summary>
+    /// tekrar kontrol edilecek
+    /// </summary>
     public class SiparisResources
     {
         PaymentDao paymentDao;
@@ -320,7 +323,7 @@ namespace Ws.EntityResources.Siparis
                 siparis.version = 1;
                 lstSiparis.Add(siparis);
             }
-            return null;
+            return lstSiparis;
         }
 
         //Eklenecek
