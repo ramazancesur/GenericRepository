@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Ws</RootNamespace>
     <AssemblyName>Ws</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -21,6 +21,8 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <ApplicationInsightsResourceId />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,32 +41,34 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
@@ -76,6 +81,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="RestWs\Calisan\CalisanWs.svc" />
+    <Content Include="RestWs\Firma\FirmWs.svc" />
+    <Content Include="RestWs\Musteri\MusteriWs.svc" />
+    <Content Include="RestWs\Satici\SaticiWs.svc" />
+    <Content Include="RestWs\Siparis\SiparisWs.svc" />
+    <Content Include="RestWs\Urun\UrunWs.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,7 +118,6 @@
     <Compile Include="EntityResources\Siparis\SiparisResources.cs" />
     <Compile Include="EntityResources\Urun\UrunResources.cs" />
     <Compile Include="Helper\CreateLog.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Model\address.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -175,22 +185,45 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestWs\Dto\BaseDTO.cs" />
-    <Compile Include="RestWs\Dto\CalisanDTO.cs" />
-    <Compile Include="RestWs\Dto\FirmDTO.cs" />
-    <Compile Include="RestWs\Dto\LisanceDTO.cs" />
-    <Compile Include="RestWs\Dto\LogDTO.cs" />
-    <Compile Include="RestWs\Dto\MusteriDTO.cs" />
-    <Compile Include="RestWs\Dto\OdemeDetayDTO.cs" />
-    <Compile Include="RestWs\Dto\OdemeDTO.cs" />
-    <Compile Include="RestWs\Dto\SaticiDTO.cs" />
-    <Compile Include="RestWs\Dto\SatisRaporlariDTO.cs" />
-    <Compile Include="RestWs\Dto\SiparisDetailDTO.cs" />
-    <Compile Include="RestWs\Dto\SiparisDTO.cs" />
-    <Compile Include="RestWs\Dto\UrunDTO.cs" />
+    <Compile Include="RestWs\Calisan\CalisanWs.svc.cs">
+      <DependentUpon>CalisanWs.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RestWs\Calisan\ICalisanWs.cs" />
+    <Compile Include="Dto\BaseDTO.cs" />
+    <Compile Include="Dto\CalisanDTO.cs" />
+    <Compile Include="Dto\FirmDTO.cs" />
+    <Compile Include="Dto\LisanceDTO.cs" />
+    <Compile Include="Dto\LogDTO.cs" />
+    <Compile Include="Dto\MusteriDTO.cs" />
+    <Compile Include="Dto\OdemeDetayDTO.cs" />
+    <Compile Include="Dto\OdemeDTO.cs" />
+    <Compile Include="Dto\SaticiDTO.cs" />
+    <Compile Include="Dto\SatisRaporlariDTO.cs" />
+    <Compile Include="Dto\SiparisDetailDTO.cs" />
+    <Compile Include="Dto\SiparisDTO.cs" />
+    <Compile Include="Dto\UrunDTO.cs" />
+    <Compile Include="RestWs\Firma\FirmWs.svc.cs">
+      <DependentUpon>FirmWs.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RestWs\Firma\IFirmWs.cs" />
+    <Compile Include="RestWs\Musteri\IMusteriWs.cs" />
+    <Compile Include="RestWs\Musteri\MusteriWs.svc.cs">
+      <DependentUpon>MusteriWs.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RestWs\Satici\ISaticiWs.cs" />
+    <Compile Include="RestWs\Satici\SaticiWs.svc.cs">
+      <DependentUpon>SaticiWs.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RestWs\Siparis\ISiparisWs.cs" />
+    <Compile Include="RestWs\Siparis\SiparisWs.svc.cs">
+      <DependentUpon>SiparisWs.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RestWs\Urun\IUrunWs.cs" />
+    <Compile Include="RestWs\Urun\UrunWs.svc.cs">
+      <DependentUpon>UrunWs.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
     <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -198,6 +231,7 @@
     <Content Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

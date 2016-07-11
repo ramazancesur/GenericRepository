@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Ws.RestWs.Satici.SaticiWs" CodeBehind="SaticiWs.svc.cs" %>

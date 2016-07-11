@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Ws.RestWs.Calisan.CalisanWs" CodeBehind="CalisanWs.svc.cs" %>

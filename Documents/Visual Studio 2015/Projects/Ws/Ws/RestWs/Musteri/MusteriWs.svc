@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Ws.RestWs.Musteri.MusteriWs" CodeBehind="MusteriWs.svc.cs" %>
