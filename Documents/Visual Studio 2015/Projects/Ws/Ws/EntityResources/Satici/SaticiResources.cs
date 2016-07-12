@@ -12,7 +12,7 @@ using Ws.RestWs.Dto;
 
 namespace Ws.EntityResources.Satici
 {
-    public class SaticiResources
+    public class SaticiResources:ISaticiResources
     {
         EmployeeDao employeeDao;
         AdressDao addresDao;

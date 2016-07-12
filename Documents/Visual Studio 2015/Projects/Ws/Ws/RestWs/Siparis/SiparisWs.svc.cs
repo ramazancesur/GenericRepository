@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using Ws.EntityResources.Siparis;
 using Ws.RestWs.Dto;
 
 namespace Ws.RestWs.Siparis
@@ -10,54 +11,73 @@ namespace Ws.RestWs.Siparis
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class SiparisWs : ISiparisWs
     {
+        ISiparisResources siparisResources;
+        public SiparisWs()
+        {
+            init();
+        }
+        private void init()
+        {
+            siparisResources = new SiparisResources();
+        }
         public List<OdemeDTO> allOdeme()
         {
-            throw new NotImplementedException();
+            List<OdemeDTO> lstOdeme = siparisResources.allOdeme();
+            return lstOdeme;
         }
 
         public List<OdemeDetayDTO> allOdemeDetay(OdemeDTO odeme)
         {
-            throw new NotImplementedException();
+            List<OdemeDetayDTO> lstOdemeDetay = siparisResources.allOdemeDetay(odeme);
+            return lstOdemeDetay;
         }
 
         public List<SiparisDTO> allSiparis()
         {
-            throw new NotImplementedException();
+            List<SiparisDTO> lstSiparis = siparisResources.allSiparis();
+            return lstSiparis;
         }
 
         public List<SiparisDetailDTO> allSiparisDetay(SiparisDTO siparis, CalisanDTO calisanDTO)
         {
-            throw new NotImplementedException();
+            List<SiparisDetailDTO> lstSiparisDetail = siparisResources.allSiparisDetay(siparis, calisanDTO);
+            return lstSiparisDetail;
         }
 
         public OdemeDTO createOdeme(OdemeDTO odeme, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            OdemeDTO odemeDTO = siparisResources.createOdeme(odeme, calisan);
+            return odemeDTO;
         }
 
         public SiparisDTO createSiparisDTO(SiparisDTO siparis, OdemeDTO odeme, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            SiparisDTO siparisDTO = siparisResources.createSiparisDTO(siparis, odeme, calisan);
+            return siparisDTO;
         }
 
         public OdemeDTO deleteOdemeDTO(OdemeDTO odeme, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            OdemeDTO odemeDTO = siparisResources.deleteOdemeDTO(odeme, calisan);
+            return odemeDTO;
         }
 
         public SiparisDTO deleteSiparisDTO(SiparisDTO siparis, OdemeDTO odeme, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            SiparisDTO siparisDTO = siparisResources.deleteSiparisDTO(siparis, odeme, calisan);
+            return siparisDTO;
         }
 
         public OdemeDTO updateOdemeDTO(OdemeDTO odeme, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            OdemeDTO odemeDTO = siparisResources.updateOdemeDTO(odeme, calisan);
+            return odemeDTO;
         }
 
         public SiparisDTO updateSiparisDTO(SiparisDTO siparis, OdemeDTO odeme, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            SiparisDTO siparisDTO = siparisResources.updateSiparisDTO(siparis, odeme, calisan);
+            return siparisDTO;
         }
     }
 }

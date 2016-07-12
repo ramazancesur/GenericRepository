@@ -11,7 +11,7 @@ using Ws.RestWs.Dto;
 
 namespace Ws.EntityResources.Calisan
 {
-    public class CalisanResources
+    public class CalisanResources:ICalisanResources
     {
         LogDao logDao;
         EmployeeDao employeeDao;

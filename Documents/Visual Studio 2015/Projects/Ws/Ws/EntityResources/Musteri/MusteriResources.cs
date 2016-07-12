@@ -10,7 +10,7 @@ using Ws.RestWs.Dto;
 
 namespace Ws.EntityResources.Musteri
 {
-    public class MusteriResources
+    public class MusteriResources:IMusteriResources
     {
         ClientDao clientDao;
         AdressDao addressDao;

@@ -25,7 +25,7 @@ namespace Ws.EntityResources.Siparis
     /// <summary>
     /// tekrar kontrol edilecek
     /// </summary>
-    public class SiparisResources
+    public class SiparisResources:ISiparisResources
     {
         PaymentDao paymentDao;
         PaymentDetailsDao paymentDetailDao;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using Ws.EntityResources.Calisan;
 using Ws.RestWs.Dto;
 
 namespace Ws.RestWs.Calisan
@@ -10,24 +11,37 @@ namespace Ws.RestWs.Calisan
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class CalisanWs : ICalisanWs
     {
+        private ICalisanResources calisanResources;
+        public CalisanWs()
+        {
+            init();
+        }
+        private void init()
+        {
+            calisanResources = new CalisanResources();
+        }
         public List<CalisanDTO> allCaliisanList()
         {
-            throw new NotImplementedException();
+            List<CalisanDTO> lstCalisan = calisanResources.allCalisanList();
+            return lstCalisan;
         }
 
         public CalisanDTO createCalisan(CalisanDTO calisanDTO, CalisanDTO createdCalisanDTO)
         {
-            throw new NotImplementedException();
+            CalisanDTO calisanDRTO = calisanResources.createCalisan(calisanDTO, createdCalisanDTO);
+            return calisanDRTO;
         }
 
         public CalisanDTO removeCalisan(CalisanDTO calisanDTO, CalisanDTO createdCalisanDTO)
         {
-            throw new NotImplementedException();
+            CalisanDTO calisanDRTO = calisanResources.removeCalisan(calisanDTO, createdCalisanDTO);
+            return calisanDRTO;
         }
 
         public CalisanDTO updateEmployee(CalisanDTO calisanDTO, CalisanDTO createdCalisanDTO)
         {
-            throw new NotImplementedException();
+            CalisanDTO calisanDRTO = calisanResources.updateEmployee(calisanDTO, createdCalisanDTO);
+            return calisanDRTO;
         }
     }
 }

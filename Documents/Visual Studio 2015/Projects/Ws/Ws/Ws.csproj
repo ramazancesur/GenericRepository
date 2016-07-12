@@ -44,8 +44,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -112,10 +116,16 @@
     <Compile Include="EntityDao\StockDetails\StockDetailsDao.cs" />
     <Compile Include="EntityDao\Stock\StockDao.cs" />
     <Compile Include="EntityResources\Calisan\CalisanResources.cs" />
+    <Compile Include="EntityResources\Calisan\ICalisanResources.cs" />
     <Compile Include="EntityResources\Firma\FirmResources.cs" />
+    <Compile Include="EntityResources\Firma\IFirmResources.cs" />
+    <Compile Include="EntityResources\Musteri\IMusteriResources.cs" />
     <Compile Include="EntityResources\Musteri\MusteriResources.cs" />
+    <Compile Include="EntityResources\Satici\ISaticiResources.cs" />
     <Compile Include="EntityResources\Satici\SaticiResources.cs" />
+    <Compile Include="EntityResources\Siparis\ISiparisResources.cs" />
     <Compile Include="EntityResources\Siparis\SiparisResources.cs" />
+    <Compile Include="EntityResources\Urun\IUrunResources.cs" />
     <Compile Include="EntityResources\Urun\UrunResources.cs" />
     <Compile Include="Helper\CreateLog.cs" />
     <Compile Include="Model\address.cs">
@@ -189,19 +199,19 @@
       <DependentUpon>CalisanWs.svc</DependentUpon>
     </Compile>
     <Compile Include="RestWs\Calisan\ICalisanWs.cs" />
-    <Compile Include="Dto\BaseDTO.cs" />
-    <Compile Include="Dto\CalisanDTO.cs" />
-    <Compile Include="Dto\FirmDTO.cs" />
-    <Compile Include="Dto\LisanceDTO.cs" />
-    <Compile Include="Dto\LogDTO.cs" />
-    <Compile Include="Dto\MusteriDTO.cs" />
-    <Compile Include="Dto\OdemeDetayDTO.cs" />
-    <Compile Include="Dto\OdemeDTO.cs" />
-    <Compile Include="Dto\SaticiDTO.cs" />
-    <Compile Include="Dto\SatisRaporlariDTO.cs" />
-    <Compile Include="Dto\SiparisDetailDTO.cs" />
-    <Compile Include="Dto\SiparisDTO.cs" />
-    <Compile Include="Dto\UrunDTO.cs" />
+    <Compile Include="DTOs\BaseDTO.cs" />
+    <Compile Include="DTOs\CalisanDTO.cs" />
+    <Compile Include="DTOs\FirmDTO.cs" />
+    <Compile Include="DTOs\LisanceDTO.cs" />
+    <Compile Include="DTOs\LogDTO.cs" />
+    <Compile Include="DTOs\MusteriDTO.cs" />
+    <Compile Include="DTOs\OdemeDetayDTO.cs" />
+    <Compile Include="DTOs\OdemeDTO.cs" />
+    <Compile Include="DTOs\SaticiDTO.cs" />
+    <Compile Include="DTOs\SatisRaporlariDTO.cs" />
+    <Compile Include="DTOs\SiparisDetailDTO.cs" />
+    <Compile Include="DTOs\SiparisDTO.cs" />
+    <Compile Include="DTOs\UrunDTO.cs" />
     <Compile Include="RestWs\Firma\FirmWs.svc.cs">
       <DependentUpon>FirmWs.svc</DependentUpon>
     </Compile>

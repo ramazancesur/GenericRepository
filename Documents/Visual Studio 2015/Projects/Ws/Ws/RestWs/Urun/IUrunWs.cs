@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
 using Ws.RestWs.Dto;
 
 namespace Ws.RestWs.Urun
@@ -14,9 +10,17 @@ namespace Ws.RestWs.Urun
     public interface IUrunWs
     {
         [OperationContract]
+        [WebInvoke(Method = "PUT",
+                   BodyStyle =WebMessageBodyStyle.Wrapped,
+                   ResponseFormat = WebMessageFormat.Json,
+                   UriTemplate = "AllUrun")]
         List<UrunDTO> getAll(CalisanDTO calisanDTO);
 
         [OperationContract]
+        [WebInvoke(Method = "PUT",
+                   BodyStyle = WebMessageBodyStyle.Wrapped,
+                   ResponseFormat = WebMessageFormat.Json,
+                   UriTemplate = "FirmUrun")]
         FirmDTO findByFirm(CalisanDTO calisanDTO, UrunDTO urun);
 
         [OperationContract]

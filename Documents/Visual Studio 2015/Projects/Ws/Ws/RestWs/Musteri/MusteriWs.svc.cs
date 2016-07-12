@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
+using Ws.EntityResources.Musteri;
 using Ws.Model;
 using Ws.RestWs.Dto;
 
@@ -14,29 +11,43 @@ namespace Ws.RestWs.Musteri
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class MusteriWs : IMusteriWs
     {
+        IMusteriResources musteriResources;
+        public MusteriWs()
+        {
+            init();
+        }
+        private void init()
+        {
+            musteriResources = new MusteriResources();
+        }
         public MusteriDTO createMusteri(MusteriDTO musteri, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            MusteriDTO musteriDTO = musteriResources.createMusteri(musteri, calisan);
+            return musteriDTO;
         }
 
         public MusteriDTO deleteMusteri(MusteriDTO musteri, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            MusteriDTO musteriDTO = musteriResources.deleteMusteri(musteri, calisan);
+            return musteriDTO;
         }
 
         public MusteriDTO findMusteriByClient(client client)
         {
-            throw new NotImplementedException();
+            MusteriDTO musteri = musteriResources.findMusteriByClient(client);
+            return musteri;
         }
 
         public List<MusteriDTO> lstMusteriDTO()
         {
-            throw new NotImplementedException();
+            List<MusteriDTO> lstMusteri = musteriResources.lstMusteriDTO();
+            return lstMusteri;
         }
 
         public MusteriDTO updateMusteri(MusteriDTO musteri, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            MusteriDTO musteriDTO = musteriResources.updateMusteri(musteri, calisan);
+            return musteriDTO;
         }
     }
 }

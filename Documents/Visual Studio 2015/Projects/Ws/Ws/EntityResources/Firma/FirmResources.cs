@@ -10,7 +10,7 @@ using System;
 
 namespace Ws.EntityResources.Firma
 {
-    public class FirmResources
+    public class FirmResources:IFirmResources
     {
         FirmDao firmDao;
         AdressDao addressDao;

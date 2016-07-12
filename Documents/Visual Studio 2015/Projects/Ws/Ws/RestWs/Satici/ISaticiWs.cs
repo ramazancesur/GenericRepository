@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
 using Ws.RestWs.Dto;
 
 namespace Ws.RestWs.Satici

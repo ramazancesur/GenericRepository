@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Ws.EntityResources.Firma;
 using Ws.RestWs.Dto;
 
 namespace Ws.RestWs.Firma
@@ -13,29 +14,43 @@ namespace Ws.RestWs.Firma
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class FirmWs : IFirmWs
     {
+        private IFirmResources firmResources;
+        public FirmWs()
+        {
+            init();
+        }
+        private void init()
+        {
+            firmResources = new FirmResources();
+        }
         public List<FirmDTO> allFirm()
         {
-            throw new NotImplementedException();
+            List<FirmDTO> lstFirm = firmResources.allFirm();
+            return lstFirm;
         }
 
         public FirmDTO createFirm(FirmDTO firmDTO, CalisanDTO calisanDTO)
         {
-            throw new NotImplementedException();
+            FirmDTO firm = firmResources.createFirm(firmDTO, calisanDTO);
+            return firm;
         }
 
         public FirmDTO DeleteFirm(FirmDTO firmDTO, CalisanDTO calisanDTO)
         {
-            throw new NotImplementedException();
+            FirmDTO firm = firmResources.DeleteFirm(firmDTO, calisanDTO);
+            return firm;
         }
 
         public List<FirmDTO> findbyName(string name)
         {
-            throw new NotImplementedException();
+            List<FirmDTO> lstFirm = firmResources.findbyName(name);
+            return lstFirm;
         }
 
         public FirmDTO updatedFirm(FirmDTO firmDTO, CalisanDTO calisanDTO)
         {
-            throw new NotImplementedException();
+            FirmDTO firm = firmResources.updatedFirm(firmDTO, calisanDTO);
+            return firm;
         }
     }
 }

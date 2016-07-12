@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
+using Ws.EntityResources.Satici;
 using Ws.RestWs.Dto;
 
 namespace Ws.RestWs.Satici
@@ -13,24 +10,37 @@ namespace Ws.RestWs.Satici
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class SaticiWs : ISaticiWs
     {
+        ISaticiResources saticiResources;
+        public SaticiWs()
+        {
+            init();
+        }
+        private void init()
+        {
+            saticiResources = new SaticiResources();
+        }
         public List<SaticiDTO> allSaticiDTO()
         {
-            throw new NotImplementedException();
+            List<SaticiDTO> lstSatici = saticiResources.allSaticiDTO();
+            return lstSatici;
         }
 
         public SaticiDTO createSatici(SaticiDTO satici, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            SaticiDTO saticiDTO = saticiResources.createSatici(satici, calisan);
+            return saticiDTO;
         }
 
         public SaticiDTO deleteSatici(SaticiDTO satici, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            SaticiDTO saticiDTO = saticiResources.deleteSatici(satici, calisan);
+            return saticiDTO;
         }
 
         public SaticiDTO updateSatici(SaticiDTO satici, CalisanDTO calisan)
         {
-            throw new NotImplementedException();
+            SaticiDTO saticiDTO = saticiResources.updateSatici(satici, calisan);
+            return saticiDTO;
         }
     }
 }

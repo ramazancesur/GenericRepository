@@ -15,7 +15,7 @@ using Ws.RestWs.Dto;
 
 namespace Ws.EntityResources.Urun
 {
-    public class UrunResources
+    public class UrunResources:IUrunResources
     {
         ProductDao productDao;
         ProductListDao productListDao;

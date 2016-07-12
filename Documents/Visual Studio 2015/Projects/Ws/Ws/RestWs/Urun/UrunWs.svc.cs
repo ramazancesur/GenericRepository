@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
+using Ws.EntityResources.Urun;
 using Ws.RestWs.Dto;
 
 namespace Ws.RestWs.Urun
@@ -10,29 +10,45 @@ namespace Ws.RestWs.Urun
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class UrunWs : IUrunWs
     {
+        IUrunResources urunResources;
+        public UrunWs()
+        {
+            init();
+        }
+        private void init()
+        {
+            urunResources = new UrunResources();
+        }
         public UrunDTO createUrunDTO(UrunDTO urunDTO, CalisanDTO createdCalisanDTO)
         {
-            throw new NotImplementedException();
+            UrunDTO urun = urunResources.createUrunDTO(urunDTO, createdCalisanDTO);
+            return urun;
         }
 
         public UrunDTO deleteUrunDTO(UrunDTO urunDTO, CalisanDTO createdCalisanDTO, int firmID)
         {
-            throw new NotImplementedException();
-        }
-
+            UrunDTO urun = urunResources.deleteUrunDTO(urunDTO, createdCalisanDTO, firmID);
+            return urun;
+        }   
+       
         public FirmDTO findByFirm(CalisanDTO calisanDTO, UrunDTO urun)
         {
-            throw new NotImplementedException();
+            throw new System.Exception();
+            FirmDTO firm = urunResources.findByFirm(calisanDTO, urun);
+            return firm;
         }
+       
 
         public List<UrunDTO> getAll(CalisanDTO calisanDTO)
         {
-            throw new NotImplementedException();
+            List<UrunDTO> lstUrun = urunResources.getAll(calisanDTO);
+            return lstUrun;
         }
 
         public UrunDTO updateUrunDTO(UrunDTO urunDTO, CalisanDTO createdCalisanDTO)
         {
-            throw new NotImplementedException();
+            UrunDTO urun = urunResources.updateUrunDTO(urunDTO, createdCalisanDTO);
+            return urun;
         }
     }
 }
